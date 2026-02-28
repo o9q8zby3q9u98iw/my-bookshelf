@@ -2,9 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById('contactModal');
     const openBtn = document.getElementById('openContactBtn');
     const closeBtn = document.getElementById('closeContactBtn');
+    const formFields = document.getElementById('formFields');
+    const formStatus = document.getElementById('formStatus');
+    const emailForm = document.getElementById('emailForm');
     
-    // 1. Modal Controls (WAKE UP INSTANTLY)
-    openBtn.addEventListener('click', () => modal.classList.add('is-open'));
+    // 1. Modal Controls
+    openBtn.addEventListener('click', () => {
+        modal.classList.add('is-open');
+        // Reset the form view every time the modal is opened
+        formFields.style.display = 'block';
+        formStatus.style.display = 'none';
+        emailForm.reset();
+    });
     closeBtn.addEventListener('click', () => modal.classList.remove('is-open'));
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('is-open');
@@ -27,18 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDynamicData();
 
     // 3. Handle Email Form Submit
-    document.getElementById('emailForm').addEventListener('submit', async (e) => {
+    emailForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const submitBtn = e.target.querySelector('button[type="submit"]');
-        const statusText = document.getElementById('formStatus');
         
         submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
         
         // Clear previous styling before new submission
-        statusText.className = "";
-        statusText.style.display = "none";
+        formStatus.className = "";
+        formStatus.style.display = "none";
         
         const payload = {
             name: document.getElementById('senderName').value,
@@ -56,18 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
             const rawText = await res.text();
             
             if (rawText.includes("success")) {
-                statusText.textContent = "Message sent successfully!";
-                statusText.className = "status-success"; // Adds the new green CSS box
-                e.target.reset(); 
+                formStatus.textContent = "Message sent successfully!";
+                formStatus.className = "status-success";
+                // Hide the inputs and button, showing ONLY the success banner
+                formFields.style.display = "none";
+                emailForm.reset(); 
             } else {
                 throw new Error(rawText);
             }
         } catch (error) {
             console.error("Form Error:", error);
-            statusText.textContent = "Error sending message. Please try again.";
-            statusText.className = "status-error"; // Adds the new red CSS box
+            formStatus.textContent = "Error sending message. Please try again.";
+            formStatus.className = "status-error"; 
         } finally {
-            statusText.style.display = "block";
+            formStatus.style.display = "block";
             submitBtn.textContent = "Send Message";
             submitBtn.disabled = false;
         }

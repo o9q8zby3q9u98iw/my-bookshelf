@@ -257,6 +257,7 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
     background-color: #f5f5f7; 
     outline: none;
     transition: all 0.2s ease;
+    resize: none; /* Prevents the user from dragging and expanding the message box */
 }
 .form-input:focus { 
     background-color: #fff;
