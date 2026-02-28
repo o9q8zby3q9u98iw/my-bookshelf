@@ -45,6 +45,7 @@ function applyFilters() {
         (b.author || '').toLowerCase().includes(searchTerm)
     );
     
+    // Multi-parameter sorting utilizing native .localeCompare() methods
     if (sortValue === 'titleAsc') filtered.sort((a,b) => (a.title || '').localeCompare(b.title || ''));
     if (sortValue === 'titleDesc') filtered.sort((a,b) => (b.title || '').localeCompare(a.title || ''));
     if (sortValue === 'authorAsc') filtered.sort((a,b) => (a.author || '').localeCompare(b.author || ''));
@@ -61,7 +62,6 @@ function renderBooks(books) {
     }
     
     shelf.innerHTML = books.map(book => {
-        // Updated to use the new API's variable names (book.cover, book.amazonLink)
         const imgHtml = book.cover ? `<img src="${book.cover}" class="cover-img" onload="this.classList.add('loaded'); this.parentElement.classList.add('stop-shimmer')" loading="lazy">` : '';
         
         let summaryHtml = 'No summary available.';

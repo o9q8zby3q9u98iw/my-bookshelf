@@ -2,7 +2,33 @@ html, body {
     background-color: #fcfcfc; color: #1d1d1f;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
     margin: 0; padding: 0; overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent; /* Removes mobile tap flash */
 }
+
+/* --- NAVIGATION --- */
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.5rem 2rem;
+    position: absolute; 
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+}
+.nav-links a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #86868b;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+.nav-links a.active, .nav-links a:hover {
+    color: #1d1d1f;
+    font-weight: 600;
+}
+
+/* --- MAIN CONTAINER --- */
 .container { max-width: 1200px; margin: 0 auto; padding: 5rem 1.5rem 3rem 1.5rem; }
 @media (min-width: 768px) { .container { padding-top: 3rem; } }
 
@@ -14,12 +40,12 @@ h1 { text-align: center; margin-bottom: 2.5rem; font-weight: 700; font-size: 2.2
     min-height: 48px;
 }
 .search-input { 
-    width: 44px; height: 44px; padding: 0; border: none; border-radius: 22px; outline: none;
+    width: 44px; height: 44px; padding: 0; border: none; border-radius: 22px; outline: none !important;
     background-color: #f5f5f7;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='11' cy='11' r='8'/%3e%3cline x1='21' y1='21' x2='16.65' y2='16.65'/%3e%3c/svg%3e");
     background-repeat: no-repeat; background-position: center;
     font-size: 0; color: transparent; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-tap-highlight-color: transparent; box-sizing: border-box;
+    box-sizing: border-box;
 }
 .search-input:focus, .search-input:not(:placeholder-shown) { 
     width: 220px; padding: 0 16px 0 40px; background-position: 14px center;
@@ -29,13 +55,13 @@ h1 { text-align: center; margin-bottom: 2.5rem; font-weight: 700; font-size: 2.2
 .search-input:focus::placeholder { color: #86868b; }
 
 .sort-select { 
-    width: 44px; height: 44px; min-width: 44px; flex-shrink: 0; padding: 0; border: none; border-radius: 22px; outline: none;
+    width: 44px; height: 44px; min-width: 44px; flex-shrink: 0; padding: 0; border: none; border-radius: 22px; outline: none !important;
     background-color: #f5f5f7;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M7 15l5 5 5-5M7 9l5-5 5 5'/%3e%3c/svg%3e");
     background-repeat: no-repeat; background-position: center;
     color: transparent; cursor: pointer; transition: 0.2s;
     appearance: none; -webkit-appearance: none; -moz-appearance: none;
-    -webkit-tap-highlight-color: transparent; box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* --- GRID --- */
@@ -47,7 +73,6 @@ h1 { text-align: center; margin-bottom: 2.5rem; font-weight: 700; font-size: 2.2
 .book-card { 
     border: none !important; outline: none !important; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-radius: 12px; 
     transition: 0.3s ease; display: flex; flex-direction: column; background: #fff; overflow: hidden; height: 100%; cursor: pointer; 
-    -webkit-tap-highlight-color: transparent;
 } 
 .book-card:hover, .book-card.is-active { box-shadow: 0 12px 28px rgba(0,0,0,0.1); transform: translateY(-4px); }
 
@@ -62,7 +87,7 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
 
 .card-body { padding: 1rem; display: flex; flex-direction: column; flex-grow: 1; }
 .book-title { font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.book-card.is-active .book-title { white-space: normal; overflow: visible; }
+.book-card.is-active .book-title { white-space: normal; overflow: visible; } /* Dynamic Title Expansion */
 .book-author { font-size: 0.85rem; color: #666; margin: 0 0 1rem 0; }
 
 .btn-amazon { background-color: #f5f5f7; color: #1d1d1f; border: none; border-radius: 8px; outline: none;
@@ -78,10 +103,10 @@ padding: 10px 16px; font-size: 0.85rem; font-weight: 600; text-decoration: none;
 .summary-content { flex-grow: 1; padding: 1.5rem; overflow-y: auto; text-align: center; display: flex; flex-direction: column; }
 .summary-text { margin: auto 0; font-size: 0.95rem; line-height: 1.6; color: #1d1d1f; }
 
-/* --- AI LINK (Touch Guard Implemented) --- */
+/* --- AI LINK --- */
 .ai-link { 
     position: absolute; bottom: 8px; right: 8px; display: flex; align-items: center; z-index: 25; 
-    text-decoration: none; -webkit-tap-highlight-color: transparent; padding: 5px;
+    text-decoration: none; padding: 5px;
     pointer-events: none; opacity: 0; 
     transition: opacity 0.3s ease, pointer-events 0s linear 0.4s;
 }
