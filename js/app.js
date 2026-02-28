@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Search and Sort Event Listeners
     const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
+    const sortBox = document.getElementById('sortBox'); // Fixed ID to match HTML
     
     if (searchInput) searchInput.addEventListener('input', filterAndSortBooks);
-    if (sortSelect) sortSelect.addEventListener('change', filterAndSortBooks);
+    if (sortBox) sortBox.addEventListener('change', filterAndSortBooks); // Fixed ID to match HTML
 
     // --- NEW: Back to Top Button Logic ---
     const backToTopBtn = document.getElementById('backToTop');
@@ -78,20 +78,25 @@ async function fetchBooks() {
 
 function filterAndSortBooks() {
     const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
+    const sortBox = document.getElementById('sortBox'); // Fixed ID
     
     const query = searchInput ? searchInput.value.toLowerCase() : '';
-    const sort = sortSelect ? sortSelect.value : 'title';
+    const sort = sortBox ? sortBox.value : 'none';
 
     let filtered = allBooks.filter(book => 
         (book.title && book.title.toLowerCase().includes(query)) || 
         (book.author && book.author.toLowerCase().includes(query))
     );
 
-    if (sort === 'title') {
+    // Completely updated sorting logic for Ascending and Descending
+    if (sort === 'titleAsc') {
         filtered.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
-    } else if (sort === 'author') {
+    } else if (sort === 'titleDesc') {
+        filtered.sort((a, b) => (b.title || "").localeCompare(a.title || ""));
+    } else if (sort === 'authorAsc') {
         filtered.sort((a, b) => (a.author || "").localeCompare(b.author || ""));
+    } else if (sort === 'authorDesc') {
+        filtered.sort((a, b) => (b.author || "").localeCompare(a.author || ""));
     }
 
     renderBooks(filtered);
