@@ -153,6 +153,7 @@ function renderBooks(books) {
         const title = document.createElement('h3');
         title.className = 'book-title';
         title.textContent = book.title;
+        title.title = book.title; // Native HTML tooltip so users can hover to see the full long title
         
         const author = document.createElement('p');
         author.className = 'book-author';

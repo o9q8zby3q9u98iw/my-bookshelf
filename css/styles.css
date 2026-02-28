@@ -123,8 +123,20 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
 .cover-img.loaded { opacity: 1; }
 
 .card-body { padding: 1rem; display: flex; flex-direction: column; flex-grow: 1; }
-.book-title { font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.book-card.is-active .book-title { white-space: normal; overflow: visible; } 
+
+.book-title { 
+    font-size: 1rem; 
+    font-weight: 600; 
+    margin: 0 0 0.25rem 0; 
+    /* Allow up to 2 lines for longer titles */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    /* Lock the height to exactly 2 lines so the grid NEVER jumps */
+    min-height: 2.4em; 
+}
+
 .book-author { font-size: 0.85rem; color: #666; margin: 0 0 1rem 0; }
 
 /* --- BUTTONS --- */
