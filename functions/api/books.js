@@ -1,6 +1,6 @@
 export async function onRequest(context) {
   // IMPORTANT: Replace the link below with your actual Google Apps Script Web App URL from Step 1!
-  const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwV1uh6FRjnCP6kNJD8acWXq-IYKMkyq6mO1VLKNyXtPTRfSqfo6rzCS4BkpHCbDPnx/exec";
 
   try {
     // 1. Fetch the JSON securely from your Google Apps Script URL
