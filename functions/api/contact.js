@@ -1,70 +1,28 @@
-document.addEventListener("DOMContentLoaded", async () => {
-    const modal = document.getElementById('contactModal');
-    const openBtn = document.getElementById('openContactBtn');
-    const closeBtn = document.getElementById('closeContactBtn');
+export async function onRequestPost(context) {
+  // Your NEW Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfg_flnVU17m0_A63w3UBkGbViqiTW7X0vNCAqSXKIoSZzHR0Zw-WtoHX_hs4MEXcs/exec";
+  
+  try {
+    const requestData = await context.request.json();
     
-    // 1. Fetch Dynamic Data from Google Sheet
-    try {
-        const response = await fetch('/api/books');
-        const data = await response.json();
-        
-        if (data.home) {
-            if (data.home.Name) document.getElementById('profileName').textContent = data.home.Name;
-            if (data.home.Bio) document.getElementById('profileBio').textContent = data.home.Bio;
-        }
-    } catch (err) {
-        console.error("Could not load dynamic home data", err);
-    }
-
-    // 2. Modal Controls
-    openBtn.addEventListener('click', () => modal.classList.add('is-open'));
-    closeBtn.addEventListener('click', () => modal.classList.remove('is-open'));
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('is-open');
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestData)
     });
-
-    // 3. Handle Email Form Submit (Bulletproof Version)
-    document.getElementById('emailForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = e.target.querySelector('button[type="submit"]');
-        const statusText = document.getElementById('formStatus');
-        
-        submitBtn.textContent = "Sending...";
-        submitBtn.disabled = true;
-        
-        const payload = {
-            name: document.getElementById('senderName').value,
-            email: document.getElementById('senderEmail').value,
-            message: document.getElementById('senderMessage').value
-        };
-
-        try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            
-            // Read the response safely as raw text instead of strict JSON
-            const rawText = await res.text();
-            
-            // If Google's response contains the word "success", it worked!
-            if (rawText.includes("success")) {
-                statusText.textContent = "Message sent successfully!";
-                statusText.style.color = "green";
-                e.target.reset();
-            } else {
-                throw new Error(rawText);
-            }
-        } catch (error) {
-            console.error("Form Error:", error);
-            statusText.textContent = "Error sending message. Please try again.";
-            statusText.style.color = "red";
-        } finally {
-            statusText.style.display = "block";
-            submitBtn.textContent = "Send Message";
-            submitBtn.disabled = false;
-        }
+    
+    const rawText = await response.text(); 
+    
+    return new Response(rawText, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
     });
-});
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Failed to send message" }), {
+      status: 500,
+      headers: { "Access-Control-Allow-Origin": "*" }
+    });
+  }
+}
