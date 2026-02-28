@@ -41,7 +41,7 @@ async function fetchBooks() {
         container.innerHTML = `
             <div class="error-container">
                 <p class="error-text">We're having trouble loading the live bookshelf right now.</p>
-                <a href="YOUR_BACKUP_LINK_HERE" target="_blank" class="btn-email solid" style="display: inline-block; width: auto; text-decoration: none;">
+                <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSn-dN1Ui9z4gTkEqEyoqqlo8fgGkdAeQUNPLqxIuKy1GxfWqV_Mlpbe48wWp0GW2-3ORuonmM4HY4C/pubhtml?gid=0&single=true" target="_blank" class="btn-email solid" style="display: inline-block; width: auto; text-decoration: none;">
                     View Backup Bookshelf
                 </a>
             </div>
