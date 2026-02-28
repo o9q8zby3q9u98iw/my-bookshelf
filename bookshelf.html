@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Bookshelf | Library</title>
+    <title>Personal Bookshelf</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav class="sticky-header">
-        <a href="index.html">Home</a>
-        <a href="bookshelf.html">Bookshelf</a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="bookshelf.html" class="active">Bookshelf</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        </div>
     </nav>
     
-    <div class="controls">
-        <input type="text" id="searchInput" placeholder="Search books..." class="search-bubble">
-        <select id="sortSelect" class="sort-dropdown">
-            <option value="title-asc">Title A-Z</option>
-            <option value="title-desc">Title Z-A</option>
-            <option value="author-asc">Author A-Z</option>
-            <option value="author-desc">Author Z-A</option>
-        </select>
-    </div>
+    <header class="page-header">
+        <h1>Personal Bookshelf</h1>
+        <div class="controls">
+            <button class="icon-circle" aria-label="Search">🔍</button>
+            <button class="icon-circle" aria-label="Sort">↕️</button>
+        </div>
+    </header>
 
     <main id="bookshelf-grid" class="grid-container"></main>
 
