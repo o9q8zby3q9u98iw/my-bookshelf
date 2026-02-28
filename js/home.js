@@ -1,30 +1,32 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById('contactModal');
     const openBtn = document.getElementById('openContactBtn');
     const closeBtn = document.getElementById('closeContactBtn');
     
-    // 1. Fetch Dynamic Data from Google Sheet via Proxy
-    try {
-        const response = await fetch('/api/books');
-        const data = await response.json();
-        
-        if (data.home) {
-            if (data.home.Name) document.getElementById('profileName').textContent = data.home.Name;
-            if (data.home.Bio) document.getElementById('profileBio').textContent = data.home.Bio;
-            // Image override has been removed so it respects your GitHub folder!
-        }
-    } catch (err) {
-        console.error("Could not load dynamic home data", err);
-    }
-
-    // 2. Modal Controls
+    // 1. Modal Controls (WAKE UP INSTANTLY)
     openBtn.addEventListener('click', () => modal.classList.add('is-open'));
     closeBtn.addEventListener('click', () => modal.classList.remove('is-open'));
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('is-open');
     });
 
-    // 3. Handle Email Form Submit via Cloudflare Proxy
+    // 2. Fetch Dynamic Data (Loads quietly in the background)
+    const loadDynamicData = async () => {
+        try {
+            const response = await fetch('/api/books');
+            const data = await response.json();
+            
+            if (data.home) {
+                if (data.home.Name) document.getElementById('profileName').textContent = data.home.Name;
+                if (data.home.Bio) document.getElementById('profileBio').textContent = data.home.Bio;
+            }
+        } catch (err) {
+            console.error("Could not load dynamic home data", err);
+        }
+    };
+    loadDynamicData();
+
+    // 3. Handle Email Form Submit
     document.getElementById('emailForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -33,6 +35,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
+        
+        // Clear previous styling before new submission
+        statusText.className = "";
+        statusText.style.display = "none";
         
         const payload = {
             name: document.getElementById('senderName').value,
@@ -47,18 +53,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                 body: JSON.stringify(payload)
             });
             
-            const result = await res.json();
+            const rawText = await res.text();
             
-            if (result.status === "success") {
+            if (rawText.includes("success")) {
                 statusText.textContent = "Message sent successfully!";
-                statusText.style.color = "green";
-                e.target.reset();
+                statusText.className = "status-success"; // Adds the new green CSS box
+                e.target.reset(); 
             } else {
-                throw new Error("Failed by server");
+                throw new Error(rawText);
             }
         } catch (error) {
+            console.error("Form Error:", error);
             statusText.textContent = "Error sending message. Please try again.";
-            statusText.style.color = "red";
+            statusText.className = "status-error"; // Adds the new red CSS box
         } finally {
             statusText.style.display = "block";
             submitBtn.textContent = "Send Message";
