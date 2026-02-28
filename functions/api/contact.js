@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {
   // Your Google Apps Script Web App URL
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwV1uh6FRjnCP6kNJD8acWXq-IYKMkyq6mO1VLKNyXtPTRfSqfo6rzCS4BkpHCbDPnx/exec";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtvcUR-KWiL0JIP2qE-gIweSrDmICQHsmCdnf16Cg0JE8p5jsyQCZdf7t8MZP0eezk/exec";
   
   try {
     const requestData = await context.request.json();
