@@ -257,12 +257,20 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
 
 /* --- MOBILE SPECIFIC FIXES --- */
 @media (max-width: 480px) {
-    /* Give inputs more room in the modal on tiny screens */
+    /* Shrink the modal box and allow internal scrolling if the keyboard opens */
     .modal-content {
         padding: 1.5rem; 
-        width: 95%;
+        width: 85%; 
+        max-height: 85vh; 
+        overflow-y: auto; 
     }
     
+    /* Make the text boxes slightly shorter so they take up less vertical space */
+    .form-input {
+        padding: 10px;
+        margin-bottom: 0.8rem;
+    }
+
     /* Shrink the expanded search bar slightly so it doesn't push the screen */
     .search-input:focus, .search-input:not(:placeholder-shown) { 
         width: 180px; 
