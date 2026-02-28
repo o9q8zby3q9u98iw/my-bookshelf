@@ -8,12 +8,13 @@ html, body {
 /* --- NAVIGATION --- */
 .top-nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center; /* <--- Changed to perfectly center the menu */
     padding: 1.5rem 2rem;
     position: absolute; 
     top: 0;
-    right: 0;
+    left: 0; 
     width: 100%;
+    box-sizing: border-box; /* <--- Keeps padding from pushing it off-center */
     z-index: 100;
 }
 .nav-links a {
