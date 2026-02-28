@@ -3,18 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Bookshelf | Home</title>
+    <title>Charles M. Hershey | Home</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav class="sticky-header">
-        <a href="index.html">Home</a>
-        <a href="bookshelf.html">Bookshelf</a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="bookshelf.html">Bookshelf</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        </div>
     </nav>
+
     <main class="home-container">
-        <h1>Welcome to My Library</h1>
-        <p>This page can be updated dynamically later, but for now, click "Bookshelf" to see the collection!</p>
+        <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Charles M. Hershey" class="profile-pic">
+        <h1 class="profile-name">Charles M. Hershey</h1>
+        <p class="profile-bio">Personal website of Charles M. Hershey showcasing bookshelf and LinkedIn resume.</p>
+        
+        <button id="openContactBtn" class="btn-email">Email</button>
     </main>
+
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeContactBtn" class="close-btn">&times;</button>
+            <h2>Send an Email</h2>
+            <form id="emailForm">
+                <input type="text" id="senderName" placeholder="Your Name" required class="form-input">
+                <input type="email" id="senderEmail" placeholder="Your Email" required class="form-input">
+                <textarea id="senderMessage" rows="4" placeholder="Your Message" required class="form-input"></textarea>
+                <button type="submit" class="btn-email solid">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/home.js"></script>
 </body>
 </html>
