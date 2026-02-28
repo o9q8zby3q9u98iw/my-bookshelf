@@ -49,8 +49,8 @@ html, body {
 }
 
 .profile-name {
-    font-size: 2.5rem;
-    font-weight: 300;
+    font-size: 2.2rem; /* Matches bookshelf H1 */
+    font-weight: 700;  /* Matches bookshelf H1 */
     margin-bottom: 1rem;
 }
 
@@ -59,7 +59,7 @@ html, body {
     color: #666;
     max-width: 500px;
     margin-bottom: 3rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* --- MAIN CONTAINER (BOOKSHELF) --- */
@@ -125,15 +125,20 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
 .book-author { font-size: 0.85rem; color: #666; margin: 0 0 1rem 0; }
 
 /* --- BUTTONS --- */
-.btn-amazon, .btn-email { 
+.btn-amazon { 
     background-color: #f5f5f7; color: #1d1d1f; border: none; border-radius: 8px; outline: none;
     padding: 10px 16px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: 0.2s; display: block; text-align: center; margin-top: auto; 
 }
+.btn-amazon:hover { background-color: #e8e8ed; }
+
+/* Matched Home Page Email button to the Bookshelf 'View on Amazon' aesthetics */
 .btn-email {
-    background: transparent; border: 1px solid #1d1d1f; padding: 12px 100px; font-size: 1rem; border-radius: 4px; cursor: pointer; margin-top: 0;
+    background-color: #f5f5f7; color: #1d1d1f; border: none; padding: 12px 100px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; cursor: pointer; margin-top: 0; transition: all 0.2s ease;
 }
-.btn-email:hover { background: #1d1d1f; color: #fff; }
-.btn-email.solid { background: #1d1d1f; color: #fff; width: 100%; padding: 12px 20px; border-radius: 8px; margin-top: 1rem; }
+.btn-email:hover { background-color: #e8e8ed; color: #1d1d1f; }
+
+.btn-email.solid { background-color: #1d1d1f; color: #fff; width: 100%; padding: 12px 20px; border-radius: 8px; margin-top: 1rem; }
+.btn-email.solid:hover { background-color: #333; }
 
 /* --- SUMMARY OVERLAY --- */
 .summary-overlay {
