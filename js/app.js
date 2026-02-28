@@ -22,27 +22,39 @@ async function fetchBooks() {
     `;
 
     try {
+        // ATTEMPT 1: Try the live Google Sheet API
         const response = await fetch('/api/books');
+        if (!response.ok) throw new Error("Live API failed");
         const data = await response.json();
         
-        // 2. Read the new combo package format (data.books)
         allBooks = data.books ? data.books : data;
-        
-        if (!allBooks || allBooks.length === 0) {
-            throw new Error("No books found");
-        }
+        if (!allBooks || allBooks.length === 0) throw new Error("No live books found");
 
-        filterAndSortBooks(); // This removes the spinner and draws the books
+        filterAndSortBooks(); // Success! Draw the books.
 
     } catch (error) {
-        console.error("Error loading books:", error);
+        console.warn("Live database failed. Attempting to load backup...", error);
         
-        // 3. Simplified Error UI (No external backup button)
-        container.innerHTML = `
-            <div class="error-container">
-                <p class="error-text">We're having a little trouble connecting to the live database right now. Please check back in a few minutes!</p>
-            </div>
-        `;
+        try {
+            // ATTEMPT 2: The Invincible Local Backup
+            const backupResponse = await fetch('/backup.json');
+            const backupData = await backupResponse.json();
+            
+            allBooks = backupData.books ? backupData.books : backupData;
+            if (!allBooks || allBooks.length === 0) throw new Error("Backup file empty");
+            
+            filterAndSortBooks(); // Success! Draw the backup books.
+            
+        } catch (backupError) {
+            console.error("Total failure. Showing polite error:", backupError);
+            
+            // ATTEMPT 3: Only show this if EVERYTHING completely breaks
+            container.innerHTML = `
+                <div class="error-container">
+                    <p class="error-text">We're having a little trouble connecting to the database right now. Please check back in a few minutes!</p>
+                </div>
+            `;
+        }
     }
 }
 
@@ -128,7 +140,7 @@ function renderBooks(books) {
         aiLink.target = '_blank';
         aiLink.innerHTML = `
             <svg class="ai-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            <span class="ai-tooltip">Ask AI to summarize</span>
+            <span class="ai-tooltip">AI summary: Read more</span>
         `;
         imgContainer.appendChild(aiLink);
 
