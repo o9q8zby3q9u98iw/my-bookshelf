@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charles M. Hershey | Home</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <nav class="top-nav">
@@ -16,9 +16,10 @@
     </nav>
 
     <main class="home-container">
-        <img src="YOUR_PROFILE_IMAGE_URL.jpg" alt="Charles M. Hershey" class="profile-pic">
-        <h1 class="profile-name">Charles M. Hershey</h1>
-        <p class="profile-bio">Personal website of Charles M. Hershey showcasing bookshelf and LinkedIn resume.</p>
+        <img id="profileImage" src="/WebsiteProfilePhoto/profile.png" alt="Charles M. Hershey" class="profile-pic">
+        
+        <h1 id="profileName" class="profile-name">Charles M. Hershey</h1>
+        <p id="profileBio" class="profile-bio">Personal website of Charles M. Hershey showcasing bookshelf and LinkedIn resume.</p>
         
         <button id="openContactBtn" class="btn-email">Email</button>
     </main>
@@ -33,9 +34,10 @@
                 <textarea id="senderMessage" rows="4" placeholder="Your Message" required class="form-input"></textarea>
                 <button type="submit" class="btn-email solid">Send Message</button>
             </form>
+            <p id="formStatus" style="font-size: 0.85rem; margin-top: 10px; color: #1d1d1f; display: none;"></p>
         </div>
     </div>
 
-    <script src="js/home.js"></script>
+    <script src="/js/home.js"></script>
 </body>
 </html>
