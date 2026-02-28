@@ -9,6 +9,24 @@ document.addEventListener("DOMContentLoaded", () => {
     
     if (searchInput) searchInput.addEventListener('input', filterAndSortBooks);
     if (sortSelect) sortSelect.addEventListener('change', filterAndSortBooks);
+
+    // --- NEW: Back to Top Button Logic ---
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 350) {
+                backToTopBtn.classList.add('is-visible');
+            } else {
+                backToTopBtn.classList.remove('is-visible');
+            }
+        });
+
+        // Smooth scroll back to top when clicked
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });
 
 async function fetchBooks() {
