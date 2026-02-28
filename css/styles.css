@@ -8,13 +8,13 @@ html, body {
 /* --- NAVIGATION --- */
 .top-nav {
     display: flex;
-    justify-content: center; /* <--- Changed to perfectly center the menu */
+    justify-content: center;
     padding: 1.5rem 2rem;
     position: absolute; 
     top: 0;
     left: 0; 
     width: 100%;
-    box-sizing: border-box; /* <--- Keeps padding from pushing it off-center */
+    box-sizing: border-box; 
     z-index: 100;
 }
 .nav-links a {
@@ -50,8 +50,8 @@ html, body {
 }
 
 .profile-name {
-    font-size: 2.2rem; /* Matches bookshelf H1 */
-    font-weight: 700;  /* Matches bookshelf H1 */
+    font-size: 2.2rem; 
+    font-weight: 700;  
     margin-bottom: 1rem;
 }
 
@@ -79,12 +79,14 @@ h1 { text-align: center; margin-bottom: 2.5rem; font-weight: 700; font-size: 2.2
     background-color: #f5f5f7;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='11' cy='11' r='8'/%3e%3cline x1='21' y1='21' x2='16.65' y2='16.65'/%3e%3c/svg%3e");
     background-repeat: no-repeat; background-position: center;
-    font-size: 0; color: transparent; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 16px; /* Fixes iOS zoom bug before focus */
+    color: transparent; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
 }
 .search-input:focus, .search-input:not(:placeholder-shown) { 
     width: 220px; padding: 0 16px 0 40px; background-position: 14px center;
-    font-size: 1rem; color: #1d1d1f; cursor: text; background-color: #e8e8ed;
+    font-size: 16px; /* Locks at exactly 16px to prevent Apple zoom */
+    color: #1d1d1f; cursor: text; background-color: #e8e8ed;
 }
 .search-input::placeholder { color: transparent; }
 .search-input:focus::placeholder { color: #86868b; }
@@ -132,7 +134,6 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
 }
 .btn-amazon:hover { background-color: #e8e8ed; }
 
-/* Matched Home Page Email button to the Bookshelf 'View on Amazon' aesthetics */
 .btn-email {
     background-color: #f5f5f7; color: #1d1d1f; border: none; padding: 12px 100px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; cursor: pointer; margin-top: 0; transition: all 0.2s ease;
 }
@@ -186,7 +187,8 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
 /* --- FORM INPUTS --- */
 .form-input {
     width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #e8e8ed; border-radius: 8px;
-    font-size: 0.95rem; font-family: inherit; box-sizing: border-box; background-color: #f5f5f7; outline: none;
+    font-size: 16px; /* Explicitly 16px to prevent Apple zoom */
+    font-family: inherit; box-sizing: border-box; background-color: #f5f5f7; outline: none;
 }
 .form-input:focus { border-color: #1d1d1f; background-color: #fff; }
 
@@ -222,7 +224,7 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
     align-items: center;
     min-height: 200px;
     width: 100%;
-    grid-column: 1 / -1; /* Forces it to span the full grid */
+    grid-column: 1 / -1; 
 }
 
 .spinner {
@@ -251,4 +253,18 @@ background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%); backg
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
     font-weight: 500;
+}
+
+/* --- MOBILE SPECIFIC FIXES --- */
+@media (max-width: 480px) {
+    /* Give inputs more room in the modal on tiny screens */
+    .modal-content {
+        padding: 1.5rem; 
+        width: 95%;
+    }
+    
+    /* Shrink the expanded search bar slightly so it doesn't push the screen */
+    .search-input:focus, .search-input:not(:placeholder-shown) { 
+        width: 180px; 
+    }
 }
