@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formFields = document.getElementById('formFields');
     const formStatus = document.getElementById('formStatus');
     const emailForm = document.getElementById('emailForm');
+    const modalHeading = document.getElementById('modalHeading'); // Targets the new ID
     
     // 1. Modal Controls
     openBtn.addEventListener('click', () => {
@@ -12,9 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Reset the form view every time the modal is opened
         formFields.style.display = 'block';
         formStatus.style.display = 'none';
+        modalHeading.style.display = 'block'; // Brings the heading back
         emailForm.reset();
     });
+    
     closeBtn.addEventListener('click', () => modal.classList.remove('is-open'));
+    
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('is-open');
     });
@@ -66,8 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (rawText.includes("success")) {
                 formStatus.textContent = "Message sent successfully!";
                 formStatus.className = "status-success";
-                // Hide the inputs and button, showing ONLY the success banner
+                
+                // Hide the inputs, button, AND the heading, showing ONLY the success banner
                 formFields.style.display = "none";
+                modalHeading.style.display = "none"; 
+                
                 emailForm.reset(); 
             } else {
                 throw new Error(rawText);
