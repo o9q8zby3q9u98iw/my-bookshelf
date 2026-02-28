@@ -131,7 +131,7 @@ function renderBooks(books) {
             imgContainer.appendChild(overlay);
         }
 
-        // AI Summary Link
+        // MINIMALIST AI SUMMARY LINK
         const aiPrompt = `Give me a 5 bullet point summary of the book ${book.title} by ${book.author}.`;
         const aiUrl = `https://chatgpt.com/?q=${encodeURIComponent(aiPrompt)}`;
         const aiLink = document.createElement('a');
@@ -139,8 +139,8 @@ function renderBooks(books) {
         aiLink.className = 'ai-link';
         aiLink.target = '_blank';
         aiLink.innerHTML = `
-            <svg class="ai-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            <span class="ai-tooltip">AI summary: Read more</span>
+            <svg class="ai-sparkle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8l-1.06-2.31L15.62 4.62 17.94 3.56 19 1.25l1.06 2.31L22.38 4.62l-2.32 1.06L19 8zm-8 14l-2.6-5.7L2.7 13.7l5.7-2.6L11 5.4l2.6 5.7 5.7 2.6-5.7 2.6L11 22z"/></svg>
+            Ai summary: Read more
         `;
         imgContainer.appendChild(aiLink);
 
