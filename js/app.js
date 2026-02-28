@@ -1,14 +1,20 @@
-let allBooks = []; // Global state 
+let allBooks = []; // Global state
 
-// This URL will be replaced with your Cloudflare API link in the next phase!
-const API_URL = "YOUR_CLOUDFLARE_WORKER_URL_GOES_HERE"; 
+// Your Cloudflare proxy URL
+const API_URL = "/api/books"; 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    // 1. Fetch data
-    // const response = await fetch(API_URL);
-    // allBooks = await response.json();
-    // renderBooks(allBooks);
-    console.log("App loaded. Ready to connect to Cloudflare!");
+    try {
+        // 1. Fetch data from your Google Sheet via Cloudflare
+        const response = await fetch(API_URL);
+        allBooks = await response.json();
+        
+        // 2. Build the visual book cards
+        renderBooks(allBooks);
+        console.log("Books successfully loaded!");
+    } catch (error) {
+        console.error("Error loading books:", error);
+    }
 });
 
 // Smart Event Delegation [cite: 12, 60]
@@ -31,8 +37,42 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// Function to handle image fade-in after load
+// Function to handle image fade-in after load [cite: 66, 67, 82]
 function handleImageLoad(imgElement) {
     imgElement.classList.add('loaded');
     imgElement.parentElement.classList.remove('shimmer');
+}
+
+// The blueprint for building the book cards
+function renderBooks(books) {
+    const grid = document.getElementById("bookshelf-grid");
+    grid.innerHTML = ""; // Clear the grid before adding new books
+
+    books.forEach(book => {
+        // Build the dynamic AI search URL [cite: 28]
+        const searchQuery = encodeURIComponent(`${book.title} by ${book.author} Detailed AI summary, key takeaways, and chapter breakdown`);
+        const aiSummaryLink = `https://www.google.com/search?q=${searchQuery}`;
+
+        // Create the card container
+        const card = document.createElement("div");
+        card.className = "book-card";
+
+        // Inject the HTML for the card
+        card.innerHTML = `
+            <div class="image-container shimmer">
+                <img src="${book.cover}" alt="${book.title}" class="book-cover" loading="lazy" onload="handleImageLoad(this)">
+            </div>
+            <div class="book-info">
+                <h3>${book.title}</h3>
+                <p>${book.author}</p>
+                <div class="card-buttons">
+                    <a href="${aiSummaryLink}" class="ai-link" target="_blank">AI Summary</a>
+                    <a href="${book.amazonLink}" class="btn-amazon" target="_blank">Amazon</a>
+                </div>
+            </div>
+        `;
+        
+        // Add the finished card to the screen
+        grid.appendChild(card);
+    });
 }
