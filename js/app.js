@@ -37,13 +37,10 @@ async function fetchBooks() {
     } catch (error) {
         console.error("Error loading books:", error);
         
-        // 3. Show the Fallback Backup Link if loading fails!
+        // 3. Simplified Error UI (No external backup button)
         container.innerHTML = `
             <div class="error-container">
-                <p class="error-text">We're having trouble loading the live bookshelf right now.</p>
-                <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSn-dN1Ui9z4gTkEqEyoqqlo8fgGkdAeQUNPLqxIuKy1GxfWqV_Mlpbe48wWp0GW2-3ORuonmM4HY4C/pubhtml?gid=0&single=true" target="_blank" class="btn-email solid" style="display: inline-block; width: auto; text-decoration: none;">
-                    View Backup Bookshelf
-                </a>
+                <p class="error-text">We're having a little trouble connecting to the live database right now. Please check back in a few minutes!</p>
             </div>
         `;
     }
