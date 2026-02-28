@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {
-  // IMPORTANT: Replace the link below with your actual Google Apps Script Web App URL!
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtvcUR-KWiL0JIP2qE-gIweSrDmICQHsmCdnf16Cg0JE8p5jsyQCZdf7t8MZP0eezk/exec";
+  // Your NEW Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfg_flnVU17m0_A63w3UBkGbViqiTW7X0vNCAqSXKIoSZzHR0Zw-WtoHX_hs4MEXcs/exec";
   
   try {
     const requestData = await context.request.json();
@@ -8,7 +8,7 @@ export async function onRequestPost(context) {
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json' // <--- THIS IS THE MAGIC LINE GOOGLE NEEDS
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(requestData)
     });
