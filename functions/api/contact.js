@@ -1,5 +1,5 @@
 export async function onRequestPost(context) {
-  // IMPORTANT: Replace the link below with your NEW Google Apps Script Web App URL!
+  // Your Google Apps Script Web App URL
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwV1uh6FRjnCP6kNJD8acWXq-IYKMkyq6mO1VLKNyXtPTRfSqfo6rzCS4BkpHCbDPnx/exec";
   
   try {
