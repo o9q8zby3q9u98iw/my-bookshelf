@@ -1,71 +1,95 @@
-let allBooks = []; // Global state
-
-// Your Cloudflare proxy URL
-const API_URL = "/api/books"; 
+let allBooks = [];
+let searchTimeout = null;
+const API_URL = "/api/books"; // Points to your Cloudflare proxy
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        // 1. Fetch data from your Google Sheet via Cloudflare
         const response = await fetch(API_URL);
         allBooks = await response.json();
-        
-        // 2. Build the visual book cards
-        renderBooks(allBooks);
-        console.log("Books successfully loaded!");
+        applyFilters(); // Renders the initial list
     } catch (error) {
-        console.error("Error loading books:", error);
+        document.getElementById('bookshelf').innerHTML = `<p style="text-align:center; grid-column:1/-1; color:#ff3b30;">Error loading books.</p>`;
     }
 });
 
-// Smart Event Delegation 
-document.addEventListener("click", (e) => {
-    // Ghost Click Protection: Ignore clicks on links or buttons inside the card [cite: 14, 62]
-    if (e.target.closest('.ai-link') || e.target.closest('.btn-amazon')) {
-        return; 
-    }
+// Search and Sort Listeners
+document.getElementById('searchInput').addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(applyFilters, 250);
+});
+document.getElementById('sortBox').addEventListener('change', applyFilters);
 
-    const clickedCard = e.target.closest(".book-card");
+// Smart Event Delegation for Card Clicks
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.btn-amazon') || e.target.closest('.ai-link')) return; 
     
-    // Close all other cards to ensure only one is open at a time [cite: 13, 61]
-    document.querySelectorAll(".book-card.is-active").forEach(card => {
-        if (card !== clickedCard) card.classList.remove("is-active");
-    });
+    const clickedCard = e.target.closest('.book-card');
+    const allActiveCards = document.querySelectorAll('.book-card.is-active');
 
-    // Flip the clicked card
-    if (clickedCard) {
-        clickedCard.classList.toggle("is-active");
+    if (!clickedCard) {
+        allActiveCards.forEach(card => card.classList.remove('is-active'));
+        return;
     }
+
+    const isAlreadyOpen = clickedCard.classList.contains('is-active');
+    allActiveCards.forEach(card => card.classList.remove('is-active'));
+    if (!isAlreadyOpen) { clickedCard.classList.add('is-active'); }
 });
 
-// Function to handle image fade-in after load [cite: 66, 82]
-function handleImageLoad(imgElement) {
-    imgElement.classList.add('loaded');
-    imgElement.parentElement.classList.remove('shimmer');
+function applyFilters() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const sortValue = document.getElementById('sortBox').value;
+    
+    let filtered = allBooks.filter(b => 
+        (b.title || '').toLowerCase().includes(searchTerm) || 
+        (b.author || '').toLowerCase().includes(searchTerm)
+    );
+    
+    if (sortValue === 'titleAsc') filtered.sort((a,b) => (a.title || '').localeCompare(b.title || ''));
+    if (sortValue === 'titleDesc') filtered.sort((a,b) => (b.title || '').localeCompare(a.title || ''));
+    if (sortValue === 'authorAsc') filtered.sort((a,b) => (a.author || '').localeCompare(b.author || ''));
+    if (sortValue === 'authorDesc') filtered.sort((a,b) => (b.author || '').localeCompare(a.author || ''));
+    
+    renderBooks(filtered);
 }
 
-// The blueprint for building the beautiful book cards
 function renderBooks(books) {
-    const grid = document.getElementById("bookshelf-grid");
-    grid.innerHTML = ""; // Clear the grid before adding new books
-
-    books.forEach(book => {
-        // Create the card container
-        const card = document.createElement("div");
-        card.className = "book-card";
-
-        // Inject the HTML for the card (matching the new CSS)
-        card.innerHTML = `
-            <div class="image-container shimmer">
-                <img src="${book.cover}" alt="${book.title}" class="book-cover" loading="lazy" onload="handleImageLoad(this)">
-            </div>
-            <div class="book-info">
-                <h3>${book.title}</h3>
-                <p>by ${book.author}</p>
-                <a href="${book.amazonLink}" class="btn-amazon" target="_blank">View on Amazon</a>
-            </div>
-        `;
+    const shelf = document.getElementById('bookshelf');
+    if (books.length === 0) {
+        shelf.innerHTML = "<div style='grid-column: 1 / -1; text-align: center; padding: 3rem;'>No results found.</div>";
+        return;
+    }
+    
+    shelf.innerHTML = books.map(book => {
+        // Updated to use the new API's variable names (book.cover, book.amazonLink)
+        const imgHtml = book.cover ? `<img src="${book.cover}" class="cover-img" onload="this.classList.add('loaded'); this.parentElement.classList.add('stop-shimmer')" loading="lazy">` : '';
         
-        // Add the finished card to the screen
-        grid.appendChild(card);
-    });
+        let summaryHtml = 'No summary available.';
+        if (book.summary) {
+            try { summaryHtml = decodeURIComponent(book.summary); } catch(err) { summaryHtml = book.summary; }
+        }
+
+        // Advanced Prompting for Google AI Overview
+        const aiQuery = encodeURIComponent(`Provide a detailed AI summary, key takeaways, and chapter breakdown of "${book.title}" by ${book.author}`);
+        const aiLinkUrl = `https://www.google.com/search?q=${aiQuery}`;
+
+        return `
+          <div class="book-card">
+            <div class="img-container shimmer">
+              ${imgHtml}
+              <div class="summary-overlay">
+                <div class="summary-content"><div class="summary-text">${summaryHtml}</div></div>
+                <a href="${aiLinkUrl}" target="_blank" class="ai-link">
+                  <span class="ai-tooltip">AI Summary: Read More</span>
+                  <svg class="ai-icon" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h6 class="book-title">${book.title}</h6>
+              <p class="book-author">by ${book.author}</p>
+              <a href="${book.amazonLink}" target="_blank" class="btn-amazon">View on Amazon</a>
+            </div>
+          </div>`;
+    }).join('');
 }
