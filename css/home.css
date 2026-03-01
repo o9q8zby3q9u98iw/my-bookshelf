@@ -1,1 +1,47 @@
+/* --- HOME PAGE LAYOUT --- */
+.home-container {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh; text-align: center; padding: 2rem; max-width: 600px; margin: 0 auto;
+}
+.profile-pic { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: none; margin-bottom: 1.5rem; }
+.profile-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #1d1d1f; }
+.profile-bio { font-size: 1.05rem; color: #1d1d1f; font-weight: 500; max-width: 500px; margin-bottom: 2.5rem; line-height: 1.6; }
 
+/* --- BUTTONS --- */
+.btn-email, .btn-email.solid {
+    background-color: #f5f5f7; color: #1d1d1f; border: none; padding: 14px 36px; 
+    font-size: 1rem; font-weight: 600; border-radius: 30px; cursor: pointer; 
+    transition: all 0.2s ease; display: inline-block; width: auto;
+}
+.btn-email:hover, .btn-email.solid:hover { background-color: #e8e8ed; }
+#emailForm .btn-email.solid { width: 100%; border-radius: 10px; padding: 14px 20px; margin-top: 0.5rem; }
+
+/* --- CONTACT MODAL --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 200;
+    background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+.modal-content {
+    background: #fff; padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 400px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12); position: relative; transform: translateY(20px); transition: transform 0.3s ease;
+}
+.modal-overlay.is-open .modal-content { transform: translateY(0); }
+.close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #86868b; }
+
+/* --- FORM INPUTS & STATUS --- */
+.form-input {
+    width: 100%; padding: 14px 16px; margin-bottom: 1rem; border: 1px solid transparent; 
+    border-radius: 10px; font-size: 16px; font-family: inherit; box-sizing: border-box; 
+    background-color: #f5f5f7; outline: none; transition: all 0.2s ease; resize: none;
+}
+.form-input:focus { background-color: #fff; border-color: #1d1d1f; box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.08); }
+#formStatus { text-align: center; font-size: 0.95rem; font-weight: 500; margin-top: 1.5rem; padding: 12px; border-radius: 8px; display: none; }
+.status-success { background-color: #f5f5f7; color: #1d1d1f; border: 1px solid #e8e8ed; }
+.status-error { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+
+@media (max-width: 480px) {
+    .modal-content { padding: 1.5rem; width: 85%; max-height: 85vh; overflow-y: auto; }
+    .form-input { padding: 10px; margin-bottom: 0.8rem; }
+}
