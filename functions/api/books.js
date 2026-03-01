@@ -1,6 +1,6 @@
-export async function onRequestGet() {
-  // Your NEW Google Apps Script Web App URL
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfg_flnVU17m0_A63w3UBkGbViqiTW7X0vNCAqSXKIoSZzHR0Zw-WtoHX_hs4MEXcs/exec";
+export async function onRequestGet(context) {
+  // Pulled securely from Cloudflare Environment Variables
+  const GOOGLE_SCRIPT_URL = context.env.GOOGLE_SCRIPT_URL;
   
   try {
     const response = await fetch(GOOGLE_SCRIPT_URL);
