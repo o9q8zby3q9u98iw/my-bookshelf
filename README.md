@@ -4,10 +4,12 @@ A clean, lightning-fast personal website featuring a dynamic bookshelf, a glassm
 
 ## 🚀 Features
 * **Dynamic Bookshelf:** Loads books live from a Google Sheet.
-* **Smart Sorting & Searching:** Filter by title or author instantly.
+* **Smart Sorting & Searching:** Filter by title or author instantly entirely client-side.
 * **AI Integration:** One-click ChatGPT prompts for book summaries.
 * **Serverless Contact Form:** Sends messages straight to your email/sheet.
 * **Minimalist UI:** Apple-inspired design with shimmer loading effects and glassmorphism.
+* **Modular Architecture:** Utilizes split CSS (`global.css`, `home.css`, `bookshelf.css`) and a vanilla JS Web Component (`nav.js`) for easy maintenance.
+* **Secure Endpoints:** API URLs are hidden using Cloudflare Secret Environment Variables.
 
 ---
 
@@ -44,14 +46,27 @@ You need to expose your Google Sheet as a JSON API.
 
 ### Step 4: Configure the Code
 1. Clone this repository.
-2. Navigate to `/functions/api/books.js` and `/functions/api/contact.js`.
-3. Replace the `GOOGLE_SCRIPT_URL` variable with the Web App URL you copied in Step 3.
-4. Replace the `WebsiteProfilePhoto/profile.png` with your own headshot.
-5. Open `index.html` and `bookshelf.html` to update the social/LinkedIn links in the `<nav>` tags.
+2. Replace the `WebsiteProfilePhoto/profile.png` with your own headshot.
+3. Open `js/nav.js` to update the social/LinkedIn link in the `<nav>` template. *(Because this project uses a Web Component for the navigation, you only have to update it in this one file!)*
 
-### Step 5: Deploy
-This project uses Cloudflare Pages Functions for the `/api/` routes. 
+### Step 5: Deploy & Set Environment Variables
+This project uses Cloudflare Pages Functions for the `/api/` routes and securely pulls your Google Script URL from environment variables.
 1. Go to your Cloudflare Dashboard and select **Pages**.
 2. Connect your GitHub repository.
 3. Leave the build command blank and set the build directory to the root (`/`).
-4. Click Deploy! Cloudflare will automatically detect the `/functions` folder and route your API calls securely.
+4. Click **Deploy**!
+5. **CRITICAL STEP:** Once deployed, go to your project **Settings > Variables and Secrets**.
+6. Under both **Production** and **Preview** environments, add a new variable:
+   * **Type:** Select `Secret`
+   * **Variable name:** `GOOGLE_SCRIPT_URL`
+   * **Value:** Paste your Google Apps Script Web App URL from Step 3 here.
+7. Save the variables and trigger a new deployment via the **Deployments** tab so the changes take effect.
+
+---
+
+### 🔐 Updating the API Link in the Future
+If you ever deploy a new version of your Google Apps Script and generate a new URL, you must update it in Cloudflare:
+1. Log into your Cloudflare Dashboard -> **Workers & Pages** -> your project.
+2. Go to **Settings > Variables and Secrets**.
+3. Edit the `GOOGLE_SCRIPT_URL` variable for both Production and Preview.
+4. Go to the **Deployments** tab and click **Retry deployment** on your latest build for the new URL to take effect.
