@@ -1,1 +1,36 @@
 
+html, body { 
+    background-color: #fcfcfc; color: #1d1d1f;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    margin: 0; padding: 0; overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* --- NAVIGATION --- */
+.top-nav {
+    display: flex; justify-content: center; padding: 1.5rem 2rem;
+    position: absolute; top: 0; left: 0; width: 100%;
+    box-sizing: border-box; z-index: 100;
+}
+.nav-links a { margin-left: 1.5rem; text-decoration: none; color: #86868b; font-size: 0.95rem; transition: color 0.2s; }
+.nav-links a.active, .nav-links a:hover { color: #1d1d1f; font-weight: 600; }
+
+/* --- SPINNER & ERRORS --- */
+.loader-container { display: flex; justify-content: center; align-items: center; min-height: 200px; width: 100%; grid-column: 1 / -1; }
+.spinner { width: 40px; height: 40px; border: 4px solid #e8e8ed; border-top: 4px solid #1d1d1f; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.error-container { text-align: center; grid-column: 1 / -1; padding: 3rem 1rem; }
+.error-text { color: #c62828; font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500; }
+
+/* --- FLOATING BACK TO TOP --- */
+.back-to-top {
+    position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 20px); 
+    width: 44px; height: 44px; border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1d1d1f;
+    opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 150; padding: 0;
+}
+.back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.back-to-top:hover { background-color: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.back-to-top svg { width: 20px; height: 20px; margin-top: 2px; }
