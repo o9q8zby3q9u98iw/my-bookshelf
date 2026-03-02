@@ -5,22 +5,30 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Search and Sort Event Listeners
     const searchInput = document.getElementById('searchInput');
-    const sortBox = document.getElementById('sortBox'); // Fixed ID to match HTML
+    const sortBox = document.getElementById('sortBox'); 
     
     if (searchInput) searchInput.addEventListener('input', filterAndSortBooks);
-    if (sortBox) sortBox.addEventListener('change', filterAndSortBooks); // Fixed ID to match HTML
+    if (sortBox) sortBox.addEventListener('change', filterAndSortBooks); 
 
-    // --- NEW: Back to Top Button Logic ---
+    // --- ENHANCED: Back to Top Button Logic ---
     const backToTopBtn = document.getElementById('backToTop');
     if (backToTopBtn) {
-        // Show/hide button based on scroll position
+        let lastScrollY = window.scrollY;
+
+        // Show/hide button based on scroll position AND scroll direction
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 350) {
+            const currentScrollY = window.scrollY;
+            
+            // Only show if the user is scrolling UP and is past the 350px mark
+            if (currentScrollY < lastScrollY && currentScrollY > 350) {
                 backToTopBtn.classList.add('is-visible');
             } else {
+                // Hide if scrolling DOWN or near the top
                 backToTopBtn.classList.remove('is-visible');
             }
-        });
+            
+            lastScrollY = currentScrollY;
+        }, { passive: true }); // passive: true improves scroll performance
 
         // Smooth scroll back to top when clicked
         backToTopBtn.addEventListener('click', () => {
@@ -65,7 +73,7 @@ async function fetchBooks() {
 
 function filterAndSortBooks() {
     const searchInput = document.getElementById('searchInput');
-    const sortBox = document.getElementById('sortBox'); // Fixed ID
+    const sortBox = document.getElementById('sortBox'); 
     
     const query = searchInput ? searchInput.value.toLowerCase() : '';
     const sort = sortBox ? sortBox.value : 'none';

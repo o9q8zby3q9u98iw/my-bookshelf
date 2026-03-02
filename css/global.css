@@ -1,4 +1,3 @@
-
 html, body { 
     background-color: #fcfcfc; color: #1d1d1f;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
@@ -24,13 +23,30 @@ html, body {
 
 /* --- FLOATING BACK TO TOP --- */
 .back-to-top {
-    position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 20px); 
-    width: 44px; height: 44px; border-radius: 22px;
-    background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    position: fixed; 
+    /* Bottom right alignment + Safe area consideration for mobile navigation bars */
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px)); 
+    right: 24px; 
+    transform: translateY(20px); 
+    height: 44px; 
+    border-radius: 22px;
+    padding: 0 16px 0 12px; /* Replaced fixed width with padding to accommodate text */
+    background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1d1d1f;
-    opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 150; padding: 0;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    cursor: pointer; color: #1d1d1f; margin: 0;
+    opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 150;
 }
-.back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .back-to-top:hover { background-color: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
-.back-to-top svg { width: 20px; height: 20px; margin-top: 2px; }
+.back-to-top svg { width: 20px; height: 20px; }
+.back-to-top-text { font-size: 0.95rem; font-weight: 500; }
+
+/* Mobile safe spacing overrides */
+@media (max-width: 768px) {
+    .back-to-top {
+        right: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+}
