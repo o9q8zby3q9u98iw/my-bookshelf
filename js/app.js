@@ -40,7 +40,7 @@ async function fetchBooks() {
     `;
 
     try {
-        // ATTEMPT 1: Try the live Google Sheet API
+        // Attempt to fetch live data directly without fallback
         const response = await fetch('/api/books');
         if (!response.ok) throw new Error("Live API failed");
         const data = await response.json();
@@ -51,28 +51,15 @@ async function fetchBooks() {
         filterAndSortBooks(); // Success! Draw the books.
 
     } catch (error) {
-        console.warn("Live database failed. Attempting to load backup...", error);
+        console.error("Database connection failed:", error);
         
-        try {
-            // ATTEMPT 2: The Invincible Local Backup
-            const backupResponse = await fetch('/backup.json');
-            const backupData = await backupResponse.json();
-            
-            allBooks = backupData.books ? backupData.books : backupData;
-            if (!allBooks || allBooks.length === 0) throw new Error("Backup file empty");
-            
-            filterAndSortBooks(); // Success! Draw the backup books.
-            
-        } catch (backupError) {
-            console.error("Total failure. Showing polite error:", backupError);
-            
-            // ATTEMPT 3: Only show this if EVERYTHING completely breaks
-            container.innerHTML = `
-                <div class="error-container">
-                    <p class="error-text">We're having a little trouble connecting to the database right now. Please check back in a few minutes!</p>
-                </div>
-            `;
-        }
+        // Graceful minimalist empty-state UI for API failure
+        container.innerHTML = `
+            <div class="error-container">
+                <h2 style="color: #1d1d1f; font-weight: 600; margin-bottom: 0.5rem;">Library Temporarily Unavailable</h2>
+                <p style="color: #86868b; font-size: 1.05rem;">We're having a little trouble connecting to the database right now. Please check back in a few minutes.</p>
+            </div>
+        `;
     }
 }
 
@@ -107,7 +94,7 @@ function renderBooks(books) {
     container.innerHTML = ''; // Clear loader or previous books
 
     if (books.length === 0) {
-        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No books match your search.</p>';
+        container.innerHTML = '<p class="empty-state">No books match your search.</p>';
         return;
     }
 

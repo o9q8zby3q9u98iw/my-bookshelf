@@ -17,7 +17,8 @@
         <h1 id="profileName" class="profile-name">Charles M. Hershey</h1>
         <p id="profileBio" class="profile-bio">Personal website of Charles M. Hershey showcasing bookshelf and LinkedIn resume.</p>
         
-        <button id="openContactBtn" class="btn-email solid">Contact Me</button>
+        <!-- Removed "solid" class -->
+        <button id="openContactBtn" class="btn-email">Contact Me</button>
     </div>
 
     <div id="contactModal" class="modal-overlay">
@@ -29,7 +30,9 @@
                     <input type="text" id="senderName" class="form-input" placeholder="Your Name" required>
                     <input type="email" id="senderEmail" class="form-input" placeholder="Your Email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address (e.g., name@example.com)" required>
                     <textarea id="senderMessage" class="form-input" placeholder="Your Message" rows="4" required></textarea>
-                    <button type="submit" class="btn-email solid">Send Message</button>
+                    
+                    <!-- Removed "solid" class -->
+                    <button type="submit" class="btn-email">Send Message</button>
                 </div>
                 <div id="formStatus"></div>
             </form>
