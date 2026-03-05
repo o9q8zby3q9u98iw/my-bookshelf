@@ -48,24 +48,46 @@ async function fetchBooks() {
     `;
 
     try {
-        // Attempt to fetch live data directly without fallback
+        // Attempt to fetch live data
         const response = await fetch('/api/books');
-        if (!response.ok) throw new Error("Live API failed");
-        const data = await response.json();
+        
+        // ISSUE 1: HTTP Errors (e.g., Cloudflare API endpoint is broken or missing)
+        if (!response.ok) {
+            if (response.status === 404) throw new Error("API Endpoint Not Found (404). Check Cloudflare routing.");
+            if (response.status === 500) throw new Error("Server Error (500). Cloudflare failed to fetch the Google Script URL.");
+            throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+        }
+
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonError) {
+            // ISSUE 2: Invalid JSON (Very common if Google Apps Script returns an HTML login page instead of data)
+            throw new Error("Invalid JSON returned. Your Google Script might not be deployed as 'Anyone' or the URL is incorrect.");
+        }
         
         allBooks = data.books ? data.books : data;
-        if (!allBooks || allBooks.length === 0) throw new Error("No live books found");
+        
+        // ISSUE 3: Data successfully fetched, but it is empty
+        if (!allBooks || allBooks.length === 0) {
+            throw new Error("API connection successful, but no books were found in the database. Ensure your Google Sheet has data.");
+        }
 
         filterAndSortBooks(); // Success! Draw the books.
 
     } catch (error) {
         console.error("Database connection failed:", error);
         
-        // Graceful minimalist empty-state UI for API failure
+        // Graceful error UI that prints the SPECIFIC error message for troubleshooting
         container.innerHTML = `
             <div class="error-container">
-                <h2 style="color: #1d1d1f; font-weight: 600; margin-bottom: 0.5rem;">Library Temporarily Unavailable</h2>
-                <p style="color: #86868b; font-size: 1.05rem;">We're having a little trouble connecting to the database right now. Please check back in a few minutes.</p>
+                <h2 style="color: #1d1d1f; font-weight: 600; margin-bottom: 0.5rem;">Library Unavailable</h2>
+                <p style="color: #86868b; font-size: 1.05rem; margin-bottom: 1.5rem;">We couldn't load the books. See the diagnostic info below.</p>
+                
+                <div style="background-color: #ffebee; color: #c62828; padding: 16px; border-radius: 8px; border: 1px solid #ffcdd2; font-family: monospace; font-size: 0.9rem; text-align: left; display: inline-block; max-width: 100%; word-break: break-word;">
+                    <strong>Diagnostic Error:</strong><br>
+                    ${error.message}
+                </div>
             </div>
         `;
     }
@@ -133,12 +155,14 @@ function renderBooks(books) {
             imgContainer.classList.add('stop-shimmer');
         };
         img.onerror = () => {
-            img.src = 'https://via.placeholder.com/250x375?text=No+Cover';
+            // UPDATED: Reliable placeholder image service
+            img.src = 'https://placehold.co/250x375/e8e8ed/1d1d1f?text=No+Cover';
             img.classList.add('loaded');
             imgContainer.classList.add('stop-shimmer');
         };
         
-        img.src = book.cover || 'https://via.placeholder.com/250x375?text=No+Cover';
+        // UPDATED: Reliable placeholder image service fallback
+        img.src = book.cover || 'https://placehold.co/250x375/e8e8ed/1d1d1f?text=No+Cover';
         imgContainer.appendChild(img);
 
         // Summary Overlay
