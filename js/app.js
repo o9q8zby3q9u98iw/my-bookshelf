@@ -1,4 +1,8 @@
 let allBooks = [];
+let currentFilteredBooks = [];
+let displayCount = 0;
+const CHUNK_SIZE = 30;
+let scrollObserver;
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchBooks();
@@ -10,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchInput) searchInput.addEventListener('input', filterAndSortBooks);
     if (sortBox) sortBox.addEventListener('change', filterAndSortBooks); 
 
-    // --- ENHANCED: Back to Top Button Logic ---
+    // --- Back to Top Button Logic ---
     const backToTopBtn = document.getElementById('backToTop');
     if (backToTopBtn) {
         let lastScrollY = window.scrollY;
@@ -48,10 +52,18 @@ async function fetchBooks() {
     `;
 
     try {
+        // --- PHASE 1: Session Storage Cache ---
+        const cachedData = sessionStorage.getItem('bookshelfData');
+        if (cachedData) {
+            const data = JSON.parse(cachedData);
+            allBooks = data.books ? data.books : data;
+            filterAndSortBooks();
+            return; // Exit early since we have the data locally
+        }
+
         // Attempt to fetch live data
         const response = await fetch('/api/books');
         
-        // ISSUE 1: HTTP Errors (e.g., Cloudflare API endpoint is broken or missing)
         if (!response.ok) {
             if (response.status === 404) throw new Error("API Endpoint Not Found (404). Check Cloudflare routing.");
             if (response.status === 500) throw new Error("Server Error (500). Cloudflare failed to fetch the Google Script URL.");
@@ -62,34 +74,51 @@ async function fetchBooks() {
         try {
             data = await response.json();
         } catch (jsonError) {
-            // ISSUE 2: Invalid JSON (Very common if Google Apps Script returns an HTML login page instead of data)
             throw new Error("Invalid JSON returned. Your Google Script might not be deployed as 'Anyone' or the URL is incorrect.");
         }
         
         allBooks = data.books ? data.books : data;
         
-        // ISSUE 3: Data successfully fetched, but it is empty
         if (!allBooks || allBooks.length === 0) {
             throw new Error("API connection successful, but no books were found in the database. Ensure your Google Sheet has data.");
         }
 
-        filterAndSortBooks(); // Success! Draw the books.
+        // Save to cache for the session
+        sessionStorage.setItem('bookshelfData', JSON.stringify(data));
+        filterAndSortBooks(); 
 
     } catch (error) {
-        console.error("Database connection failed:", error);
+        console.warn("Live API failed, attempting fallback...", error);
         
-        // Graceful error UI that prints the SPECIFIC error message for troubleshooting
-        container.innerHTML = `
-            <div class="error-container">
-                <h2 style="color: #1d1d1f; font-weight: 600; margin-bottom: 0.5rem;">Library Unavailable</h2>
-                <p style="color: #86868b; font-size: 1.05rem; margin-bottom: 1.5rem;">We couldn't load the books. See the diagnostic info below.</p>
-                
-                <div style="background-color: #ffebee; color: #c62828; padding: 16px; border-radius: 8px; border: 1px solid #ffcdd2; font-family: monospace; font-size: 0.9rem; text-align: left; display: inline-block; max-width: 100%; word-break: break-word;">
-                    <strong>Diagnostic Error:</strong><br>
-                    ${error.message}
+        // --- PHASE 1: Local Fallback (backup.json) ---
+        try {
+            const fallbackResponse = await fetch('/backup.json');
+            if (!fallbackResponse.ok) throw new Error("Local backup.json not found.");
+            
+            const fallbackData = await fallbackResponse.json();
+            
+            // Save fallback to cache so we don't keep trying to fetch the broken API this session
+            sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));
+            allBooks = fallbackData.books ? fallbackData.books : fallbackData;
+            filterAndSortBooks();
+            
+        } catch (fallbackError) {
+            console.error("Database connection AND local fallback failed:", fallbackError);
+            
+            // Graceful error UI that prints both specific error messages for troubleshooting
+            container.innerHTML = `
+                <div class="error-container">
+                    <h2 style="color: #1d1d1f; font-weight: 600; margin-bottom: 0.5rem;">Library Unavailable</h2>
+                    <p style="color: #86868b; font-size: 1.05rem; margin-bottom: 1.5rem;">We couldn't load the books from the live server or the local backup.</p>
+                    
+                    <div style="background-color: #ffebee; color: #c62828; padding: 16px; border-radius: 8px; border: 1px solid #ffcdd2; font-family: monospace; font-size: 0.9rem; text-align: left; display: inline-block; max-width: 100%; word-break: break-word;">
+                        <strong>Diagnostic Error:</strong><br>
+                        Live: ${error.message}<br>
+                        Backup: ${fallbackError.message}
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
     }
 }
 
@@ -105,7 +134,6 @@ function filterAndSortBooks() {
         (book.author && book.author.toLowerCase().includes(query))
     );
 
-    // Completely updated sorting logic for Ascending and Descending
     if (sort === 'titleAsc') {
         filtered.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
     } else if (sort === 'titleDesc') {
@@ -116,19 +144,55 @@ function filterAndSortBooks() {
         filtered.sort((a, b) => (b.author || "").localeCompare(a.author || ""));
     }
 
-    renderBooks(filtered);
+    // --- PHASE 1: Reset for Chunked Rendering ---
+    currentFilteredBooks = filtered;
+    displayCount = 0;
+    
+    const container = document.getElementById('bookshelf');
+    container.innerHTML = ''; // Clear out the grid entirely
+
+    // Setup the infinite scroll anchor if it doesn't exist
+    let anchor = document.getElementById('scrollAnchor');
+    if (!anchor) {
+        anchor = document.createElement('div');
+        anchor.id = 'scrollAnchor';
+        anchor.style.height = '1px';
+        document.getElementById('main-content').appendChild(anchor);
+    }
+
+    setupIntersectionObserver(anchor);
+    loadMoreBooks(); // Load the first chunk
 }
 
-function renderBooks(books) {
-    const container = document.getElementById('bookshelf');
-    container.innerHTML = ''; // Clear loader or previous books
+function setupIntersectionObserver(anchor) {
+    if (scrollObserver) scrollObserver.disconnect();
+    
+    scrollObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            loadMoreBooks();
+        }
+    }, { rootMargin: "400px" }); // Pre-load when user is 400px away from the bottom
 
-    if (books.length === 0) {
+    scrollObserver.observe(anchor);
+}
+
+function loadMoreBooks() {
+    if (displayCount >= currentFilteredBooks.length) return; // All books rendered
+
+    const nextChunk = currentFilteredBooks.slice(displayCount, displayCount + CHUNK_SIZE);
+    displayCount += CHUNK_SIZE;
+    renderBooks(nextChunk);
+}
+
+function renderBooks(booksChunk) {
+    const container = document.getElementById('bookshelf');
+
+    if (booksChunk.length === 0 && displayCount === 0) {
         container.innerHTML = '<p class="empty-state">No books match your search.</p>';
         return;
     }
 
-    books.forEach(book => {
+    booksChunk.forEach(book => {
         const card = document.createElement('div');
         card.className = 'book-card';
         
@@ -155,13 +219,11 @@ function renderBooks(books) {
             imgContainer.classList.add('stop-shimmer');
         };
         img.onerror = () => {
-            // UPDATED: Reliable placeholder image service
             img.src = 'https://placehold.co/250x375/e8e8ed/1d1d1f?text=No+Cover';
             img.classList.add('loaded');
             imgContainer.classList.add('stop-shimmer');
         };
         
-        // UPDATED: Reliable placeholder image service fallback
         img.src = book.cover || 'https://placehold.co/250x375/e8e8ed/1d1d1f?text=No+Cover';
         imgContainer.appendChild(img);
 
@@ -195,7 +257,7 @@ function renderBooks(books) {
         const title = document.createElement('h3');
         title.className = 'book-title';
         title.textContent = book.title;
-        title.title = book.title; // Native HTML tooltip so users can hover to see the full long title
+        title.title = book.title; 
         
         const author = document.createElement('p');
         author.className = 'book-author';
@@ -215,6 +277,8 @@ function renderBooks(books) {
         }
 
         card.appendChild(body);
+        
+        // Append instead of clear to support endless scroll
         container.appendChild(card);
     });
 }

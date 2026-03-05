@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formFields = document.getElementById('formFields');
     const formStatus = document.getElementById('formStatus');
     const emailForm = document.getElementById('emailForm');
-    const modalHeading = document.getElementById('modalHeading'); // Targets the new ID
+    const modalHeading = document.getElementById('modalHeading'); 
     
     // 1. Modal Controls
     openBtn.addEventListener('click', () => {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Reset the form view every time the modal is opened
         formFields.style.display = 'block';
         formStatus.style.display = 'none';
-        modalHeading.style.display = 'block'; // Brings the heading back
+        modalHeading.style.display = 'block'; 
         emailForm.reset();
     });
     
@@ -25,16 +25,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Fetch Dynamic Data (Loads quietly in the background)
     const loadDynamicData = async () => {
+        const updateHomeUI = (homeData) => {
+            if (homeData) {
+                if (homeData.Name) document.getElementById('profileName').textContent = homeData.Name;
+                if (homeData.Bio) document.getElementById('profileBio').textContent = homeData.Bio;
+            }
+        };
+
         try {
+            // --- PHASE 1: Check cache first ---
+            const cachedData = sessionStorage.getItem('bookshelfData');
+            if (cachedData) {
+                updateHomeUI(JSON.parse(cachedData).home);
+                return; 
+            }
+
+            // Otherwise, fetch live
             const response = await fetch('/api/books');
+            if (!response.ok) throw new Error("API failed");
             const data = await response.json();
             
-            if (data.home) {
-                if (data.home.Name) document.getElementById('profileName').textContent = data.home.Name;
-                if (data.home.Bio) document.getElementById('profileBio').textContent = data.home.Bio;
-            }
+            sessionStorage.setItem('bookshelfData', JSON.stringify(data));
+            updateHomeUI(data.home);
+            
         } catch (err) {
-            console.error("Could not load dynamic home data", err);
+            console.warn("Live dynamic data failed, attempting fallback:", err);
+            
+            // --- PHASE 1: Try local backup.json ---
+            try {
+                const fallbackResponse = await fetch('/backup.json');
+                const fallbackData = await fallbackResponse.json();
+                
+                // Cache the fallback so we don't hit the failing API again this session
+                sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));
+                updateHomeUI(fallbackData.home);
+            } catch (fallbackErr) {
+                console.error("Could not load dynamic home data from API or Backup", fallbackErr);
+            }
         }
     };
     loadDynamicData();
