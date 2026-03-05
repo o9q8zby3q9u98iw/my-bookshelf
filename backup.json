@@ -1,0 +1,1179 @@
+{
+  "books": [
+    {
+      "id": 1001,
+      "title": "Advice for a Young Investigator",
+      "author": "Santiago Ramon Y Cajal",
+      "cover": "images/covers/1001.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0262181916/?tag=internetarchi-20",
+      "isbn": "9780262181914",
+      "summary": "A classic guide for aspiring scientists, offering practical advice and philosophical reflections on scientific research."
+    },
+    {
+      "id": 1002,
+      "title": "Baruch: My Own Story",
+      "author": "Bernard Baruch",
+      "cover": "images/covers/1002.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1607969130/?tag=internetarchi-20",
+      "isbn": "9781638232896",
+      "summary": "The autobiography of Bernard Baruch, a self-made Wall Street millionaire and trusted advisor to multiple US presidents."
+    },
+    {
+      "id": 1003,
+      "title": "The Burger King",
+      "author": "Jim McLamore",
+      "cover": "images/covers/1003.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0070452555/?tag=internetarchi-20",
+      "isbn": "9780070452558",
+      "summary": "The story of Jim McLamore, detailing how he co-founded and built the Burger King fast-food empire."
+    },
+    {
+      "id": 1004,
+      "title": "Getting to Yes with Yourself: How to Get What You Truly Want",
+      "author": "William Ury",
+      "cover": "images/covers/1004.jpg",
+      "amazonLink": "https://www.amazon.com/gp/product/0062363417?tag=internetarchi-20",
+      "isbn": "9780062363411",
+      "summary": "A guide to self-negotiation and overcoming inner obstacles to achieve personal and professional success."
+    },
+    {
+      "id": 1005,
+      "title": "Play Nice but Win: A CEO's Journey from Founder to Leader",
+      "author": "Michael Dell",
+      "cover": "images/covers/1005.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0593087747/?tag=internetarchi-20",
+      "isbn": "9780593087749",
+      "summary": "Michael Dell's memoir detailing his journey from founding Dell Technologies in his dorm room to leading a global tech giant."
+    },
+    {
+      "id": 1006,
+      "title": "Faraday, Maxwell, and the Electromagnetic Field. How Two Men Revolutionized Physics",
+      "author": "Nancy Forbes, Basil Mahon",
+      "cover": "images/covers/1006.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1616149426/?tag=internetarchi-20",
+      "isbn": "9781616149420",
+      "summary": "The history of how Michael Faraday and James Clerk Maxwell developed the concept of the electromagnetic field."
+    },
+    {
+      "id": 1007,
+      "title": "Becoming Trader Joe: How I Did Business My Way and Still Beat the Big Guys",
+      "author": "Joe Coulombe",
+      "cover": "images/covers/1007.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1713598108/?tag=internetarchi-20",
+      "isbn": "9781400225439",
+      "summary": "The memoir of Joe Coulombe, sharing his unconventional business strategies that built the beloved Trader Joe's grocery chain."
+    },
+    {
+      "id": 1008,
+      "title": "Kings of Crypto: Coinbase and the Coming Disruption of Finance",
+      "author": "Jeff John Roberts",
+      "cover": "images/covers/1008.jpg",
+      "amazonLink": "https://www.amazon.com/dp/B085TRJY8X/?tag=internetarchi-20",
+      "isbn": "9781647820183",
+      "summary": "An inside look at the rise of Coinbase and the evolution of the cryptocurrency industry."
+    },
+    {
+      "id": 1009,
+      "title": "Chasing Space: An Astronaut's Story of Grit, Grace, and Second Chances",
+      "author": "Leland Melvin",
+      "cover": "images/covers/1009.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0062496727/?tag=internetarchi-20",
+      "isbn": "9780062496720",
+      "summary": "Astronaut Leland Melvin's inspiring memoir about overcoming setbacks to achieve his dream of traveling to space."
+    },
+    {
+      "id": 1011,
+      "title": "Investor Relations: The Art and Philosophy of Effective Corporate Communications",
+      "author": "Thomas J. Lauria",
+      "cover": "images/covers/1011.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0557007631/?tag=internetarchi-20",
+      "isbn": "9780557007639",
+      "summary": "A deep dive into the strategic and philosophical aspects of effective corporate communications with investors."
+    },
+    {
+      "id": 1012,
+      "title": "Uncommon Sense: The Heretical Nature of Science",
+      "author": "Alan H. Cromer",
+      "cover": "images/covers/1012.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0195082133/?tag=internetarchi-20",
+      "isbn": "9780195082135",
+      "summary": "An exploration of the unique, unintuitive nature of scientific thinking and its impact on human progress."
+    },
+    {
+      "id": 1013,
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "cover": "images/covers/1013.jpg",
+      "amazonLink": "https://www.amazon.com/dp/B01HX5LT0O/?tag=internetarchi-20",
+      "isbn": "9780060850524",
+      "summary": "A dystopian novel exploring a futuristic society driven by technological control, consumerism, and genetic engineering."
+    },
+    {
+      "id": 1014,
+      "title": "Nevertheless: A Memoir",
+      "author": "Alec Baldwin",
+      "cover": "images/covers/1014.jpg",
+      "amazonLink": "https://www.amazon.com/dp/B01I9BDV1Q/?tag=internetarchi-20",
+      "isbn": "9780062409706",
+      "summary": "Actor Alec Baldwin's candid autobiography detailing his life, career, and personal struggles."
+    },
+    {
+      "id": 1015,
+      "title": "The Autobiography of Andrew Carnegie",
+      "author": "Andrew Carnegie",
+      "cover": "images/covers/1015.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0451530381",
+      "isbn": "9781599866956",
+      "summary": "The life story of the legendary industrialist and philanthropist, charting his rise from poverty to immense wealth."
+    },
+    {
+      "id": 1016,
+      "title": "The Ride of a Lifetime",
+      "author": "Robert Iger",
+      "cover": "images/covers/1016.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1787630471/?tag=internetarchi-20",
+      "isbn": "9780399592096",
+      "summary": "Robert Iger's memoir sharing the leadership lessons he learned during his transformative tenure as CEO of Disney."
+    },
+    {
+      "id": 1017,
+      "title": "1,000 Dollars and an Idea: Entrepreneur to Billionaire",
+      "author": "Sam Wyly",
+      "cover": "images/covers/1017.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1557048649/?tag=internetarchi-20",
+      "isbn": "9781557048646",
+      "summary": "Sam Wyly's autobiography recounting his entrepreneurial journey to building multiple billion-dollar businesses."
+    },
+    {
+      "id": 1018,
+      "title": "Scrappy Little Nobody",
+      "author": "Anna Kendrick",
+      "cover": "images/covers/1018.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1471156842/?tag=internetarchi-20",
+      "isbn": "9781501117220",
+      "summary": "A humorous and relatable collection of autobiographical essays by actress Anna Kendrick."
+    },
+    {
+      "id": 1019,
+      "title": "The Complete Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "cover": "images/covers/1019.jpg",
+      "amazonLink": "https://www.amazon.com/dp/B000N770O4/?tag=internetarchi-20",
+      "isbn": "9781435167902",
+      "summary": "The definitive collection of Arthur Conan Doyle's iconic detective stories featuring Sherlock Holmes and Dr. Watson."
+    },
+    {
+      "id": 1020,
+      "title": "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future",
+      "author": "Ashlee Vance",
+      "cover": "images/covers/1020.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0062301233/?tag=internetarchi-20",
+      "isbn": "9780062301239",
+      "summary": "A biography exploring the ambitious life and ventures of Elon Musk, from PayPal to Tesla and SpaceX."
+    },
+    {
+      "id": 1021,
+      "title": "A Mind For Numbers: How to Excel at Math and Science (Even If You Flunked Algebra)",
+      "author": "Barbara Oakley",
+      "cover": "images/covers/1021.jpg",
+      "amazonLink": "https://www.amazon.com/dp/039916524X/?tag=internetarchi-20",
+      "isbn": "9780399165245",
+      "summary": "Strategies and techniques to overcome math anxiety and improve learning in math and science."
+    },
+    {
+      "id": 1022,
+      "title": "The Intelligent Investor",
+      "author": "Benjamin Graham",
+      "cover": "images/covers/1022.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0060555661/?tag=internetarchi-20",
+      "isbn": "9780060555665",
+      "summary": "The classic text on value investing, teaching readers how to minimize risk and build long-term wealth."
+    },
+    {
+      "id": 1023,
+      "title": "A Short History of Nearly Everything",
+      "author": "Bill Bryson",
+      "cover": "images/covers/1023.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0552997048/?tag=internetarchi-20",
+      "isbn": "9780552997041",
+      "summary": "An accessible and engaging overview of the history of science and the universe."
+    },
+    {
+      "id": 1024,
+      "title": "Showing Up for Life: Thoughts on the Gifts of a Lifetime",
+      "author": "Bill Gates Sr.",
+      "cover": "images/covers/1024.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0385527012/?tag=internetarchi-20",
+      "isbn": "9780385527019",
+      "summary": "Reflections and life lessons from Bill Gates Sr., emphasizing the importance of community and philanthropy."
+    },
+    {
+      "id": 1025,
+      "title": "Discussion Materials: Tales of a Rookie Wall Street Investment Banker",
+      "author": "Bill Keenan",
+      "cover": "images/covers/1025.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Discussion%20Materials%3A%20Tales%20of%20a%20Rookie%20Wall%20Street%20Investment%20Banker%20Bill%20Keenan",
+      "isbn": "9781642934083",
+      "summary": "A humorous and insightful memoir about the grueling reality of life as a junior Wall Street investment banker."
+    },
+    {
+      "id": 1026,
+      "title": "First a Dream",
+      "author": "Bill Retherford and Jim Clayton",
+      "cover": "images/covers/1026.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=First%20a%20Dream%20Bill%20Retherford%20and%20Jim%20Clayton",
+      "isbn": "9780972638906",
+      "summary": "The story of Jim Clayton, detailing his rise from a humble background to building a successful mobile home business."
+    },
+    {
+      "id": 1027,
+      "title": "Up from Slavery",
+      "author": "Booker T. Washington",
+      "cover": "images/covers/1027.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0486287386/?tag=internetarchi-20",
+      "isbn": "9780486287386",
+      "summary": "The autobiography of Booker T. Washington, describing his journey from enslavement to becoming a leading educator."
+    },
+    {
+      "id": 1028,
+      "title": "What I Learned Losing a Million Dollars",
+      "author": "Brendan Moynihan and Jim Paul",
+      "cover": "images/covers/1028.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=What%20I%20Learned%20Losing%20a%20Million%20Dollars%20Brendan%20Moynihan%20and%20Jim%20Paul",
+      "isbn": "9780231164689",
+      "summary": "A cautionary tale highlighting the psychological pitfalls and emotional traps that lead to massive financial losses."
+    },
+    {
+      "id": 1029,
+      "title": "The Gifts of Imperfection: Let Go of Who You Think You're Supposed to Be and Embrace Who You Are",
+      "author": "Brené Brown",
+      "cover": "images/covers/1029.jpg",
+      "amazonLink": "https://www.amazon.com/dp/159285849X/?tag=internetarchi-20",
+      "isbn": "9781592858491",
+      "summary": "A guide to embracing vulnerability and letting go of perfectionism to live a more wholehearted life."
+    },
+    {
+      "id": 1030,
+      "title": "The Power of Vulnerability: Teachings on Authenticity, Connection, and Courage",
+      "author": "Brené Brown",
+      "cover": "images/covers/1030.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Power%20of%20Vulnerability%3A%20Teachings%20on%20Authenticity%2C%20Connection%2C%20and%20Courage%20Bren%C3%A9%20Brown",
+      "isbn": "9781604078589",
+      "summary": "Teachings on how embracing vulnerability can lead to greater courage, connection, and authenticity."
+    },
+    {
+      "id": 1031,
+      "title": "Born to Run",
+      "author": "Bruce Springsteen",
+      "cover": "images/covers/1031.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Born%20to%20Run%20Bruce%20Springsteen",
+      "isbn": "9781501141515",
+      "summary": "Bruce Springsteen's deeply personal memoir chronicling his life, music, and the experiences that shaped his legendary career."
+    },
+    {
+      "id": 1032,
+      "title": "My Father's Business: The Small-Town Values That Built Dollar General Into a Billion-Dollar Company",
+      "author": "Cal Turner Jr.",
+      "cover": "images/covers/1032.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=My%20Father%27s%20Business%3A%20The%20Small-Town%20Values%20That%20Built%20Dollar%20General%20Into%20a%20Billion-Dollar%20Company%20Cal%20Turner%20Jr.",
+      "isbn": 1478992980,
+      "summary": "The story of how Cal Turner Jr. built upon his father's values to grow Dollar General into a massive retail empire."
+    },
+    {
+      "id": 1033,
+      "title": "Titan: The Life of John D. Rockefeller, Sr.",
+      "author": "Ron Chernow",
+      "cover": "images/covers/1033.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0751526673/?tag=internetarchi-20",
+      "isbn": "9780679757030",
+      "summary": "A comprehensive biography of John D. Rockefeller, exploring his controversial rise to become the world's richest man."
+    },
+    {
+      "id": 1034,
+      "title": "Minding the store",
+      "author": "Stanley Marcus",
+      "cover": "images/covers/1034.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0316546232/?tag=internetarchi-20",
+      "isbn": "9781574411393",
+      "summary": "The memoir of Stanley Marcus, detailing his role in building the luxury retail brand Neiman Marcus."
+    },
+    {
+      "id": 1035,
+      "title": "The Farmer from Merna: A Biography of George J. Mecherle and a History of the State Farm Insurance Companies of Bloomington, Illinois",
+      "author": "Karl Schriftgiesser",
+      "cover": "images/covers/1035.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Farmer%20from%20Merna%3A%20A%20Biography%20of%20George%20J.%20Mecherle%20and%20a%20History%20of%20the%20State%20Farm%20Insurance%20Companies%20of%20Bloomington%2C%20Illinois%20Karl%20Schriftgiesser",
+      "isbn": 394424425,
+      "summary": "The biography of George J. Mecherle and the founding of State Farm Insurance."
+    },
+    {
+      "id": 1036,
+      "title": "Grinding It Out",
+      "author": "Ray Kroc",
+      "cover": "images/covers/1036.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0809282593/?tag=internetarchi-20",
+      "isbn": "9781250130280",
+      "summary": "Ray Kroc's autobiography detailing how he took a small hamburger stand and built the McDonald's global empire."
+    },
+    {
+      "id": 1037,
+      "title": "What It Takes: Lessons in the Pursuit of Excellence",
+      "author": "Stephen A. Schwarzman",
+      "cover": "images/covers/1037.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1471189562/?tag=internetarchi-20",
+      "isbn": 1501158147,
+      "summary": "Stephen Schwarzman's memoir sharing leadership lessons and insights from building the Blackstone Group."
+    },
+    {
+      "id": 1038,
+      "title": "Zorba the Greek ",
+      "author": "Nikos Kazantzakis",
+      "cover": "images/covers/1038.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Zorba%20the%20Greek%20%28Novel%29%20Nikos%20Kazantzakis",
+      "isbn": 1476782814,
+      "summary": "A novel about a bookish intellectual who learns about living life to the fullest from the boisterous Zorba."
+    },
+    {
+      "id": 1039,
+      "title": "Maiden Voyage",
+      "author": "Tania Aebi",
+      "cover": "images/covers/1039.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0671666533/?tag=internetarchi-20",
+      "isbn": "9780345410122",
+      "summary": "Tania Aebi's true story of becoming the youngest person and first American woman to sail solo around the world."
+    },
+    {
+      "id": 1040,
+      "title": "Mindset: Changing The Way You Think To Fulfil Your Potential",
+      "author": "Carol Dweck",
+      "cover": "images/covers/1040.jpg",
+      "amazonLink": "https://www.amazon.com/dp/147213995X/?tag=internetarchi-20",
+      "isbn": "9780345472328",
+      "summary": "An exploration of the 'growth mindset' and how our beliefs about our abilities impact our success."
+    },
+    {
+      "id": 1041,
+      "title": "Good Profit",
+      "author": "Charles Koch",
+      "cover": "images/covers/1041.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0804188793/?tag=internetarchi-20",
+      "isbn": "9781101904138",
+      "summary": "Charles Koch's explanation of his Market-Based Management philosophy and how it drives long-term business success."
+    },
+    {
+      "id": 1042,
+      "title": "Invested: Changing Forever the Way Americans Invest",
+      "author": "Charles R. Schwab",
+      "cover": "images/covers/1042.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Invested%3A%20Changing%20Forever%20the%20Way%20Americans%20Invest%20Charles%20R.%20Schwab",
+      "isbn": "9781984822543",
+      "summary": "Charles Schwab's memoir on founding his namesake company and democratizing investing for everyday Americans."
+    },
+    {
+      "id": 1043,
+      "title": "I Am Malala: The Girl Who Stood Up for Education and Was Shot by the Taliban",
+      "author": "Christina Lamb and Malala Yousafzai",
+      "cover": "images/covers/1043.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0297870920/?tag=internetarchi-20",
+      "isbn": "9780316322409",
+      "summary": "The inspiring autobiography of Malala Yousafzai, who survived a Taliban assassination attempt to advocate for girls' education."
+    },
+    {
+      "id": 1044,
+      "title": "Perseverance: Broke to Billions: Barriers in Business and Strategies to Remove Them",
+      "author": "Chuck Whittall",
+      "cover": "images/covers/1044.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Perseverance%3A%20Broke%20to%20Billions%3A%20Barriers%20in%20Business%20and%20Strategies%20to%20Remove%20Them%20Chuck%20Whittall",
+      "isbn": "9781642936612",
+      "summary": "A real estate developer's story of overcoming massive debt and personal challenges to build a billion-dollar business."
+    },
+    {
+      "id": 1045,
+      "title": "Dollars and Sense: How We Misthink Money and How to Spend Smarter",
+      "author": "Dan Ariely",
+      "cover": "images/covers/1045.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Dollars%20and%20Sense%3A%20How%20We%20Misthink%20Money%20and%20How%20to%20Spend%20Smarter%20Dan%20Ariely",
+      "isbn": "9780062651211",
+      "summary": "A behavioral economics look at the irrational ways people think about and spend money."
+    },
+    {
+      "id": 1046,
+      "title": "Emotional Intelligence",
+      "author": "Daniel Goleman",
+      "cover": "images/covers/1046.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Emotional%20Intelligence%20Daniel%20Goleman",
+      "isbn": "9780553383713",
+      "summary": "Daniel Goleman's groundbreaking book arguing that emotional skills are more crucial for success than traditional IQ."
+    },
+    {
+      "id": 1047,
+      "title": "The Mind Club: Who Thinks, What Feels, and Why It Matters",
+      "author": "Daniel Wegner and Kurt Gray",
+      "cover": "images/covers/1047.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Mind%20Club%3A%20Who%20Thinks%2C%20What%20Feels%2C%20and%20Why%20It%20Matters%20Daniel%20Wegner%20and%20Kurt%20Gray",
+      "isbn": "9780670785834",
+      "summary": "An exploration of how we perceive minds in others, from animals to machines, and its moral implications."
+    },
+    {
+      "id": 1048,
+      "title": "Fooling Some of the People All of the Time: A Long, Short Story",
+      "author": "David Einhorn",
+      "cover": "images/covers/1048.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Fooling%20Some%20of%20the%20People%20All%20of%20the%20Time%3A%20A%20Long%2C%20Short%20Story%20David%20Einhorn",
+      "isbn": "9780470481547",
+      "summary": "David Einhorn's detailed account of his multi-year short-selling battle against a fraudulent financial company."
+    },
+    {
+      "id": 1049,
+      "title": "Range: Why Generalists Triumph in a Specialized World",
+      "author": "David Epstein",
+      "cover": "images/covers/1049.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Range%3A%20Why%20Generalists%20Triumph%20in%20a%20Specialized%20World%20David%20Epstein",
+      "isbn": "9780735214507",
+      "summary": "An argument that generalists, rather than early-specializing experts, are better equipped to excel in complex, unpredictable environments."
+    },
+    {
+      "id": 1050,
+      "title": "You Are Not So Smart",
+      "author": "David McRaney",
+      "cover": "images/covers/1050.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=You%20Are%20Not%20So%20Smart%20David%20McRaney",
+      "isbn": "9781592407361",
+      "summary": "A witty exploration of the cognitive biases and logical fallacies that unknowingly influence our daily decisions."
+    },
+    {
+      "id": 1051,
+      "title": "David Ogilvy: An Autobiography",
+      "author": "David Ogilvy",
+      "cover": "images/covers/1051.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=David%20Ogilvy%3A%20An%20Autobiography%20David%20Ogilvy",
+      "isbn": "9780471180029",
+      "summary": "The life story of the legendary advertising executive who revolutionized the modern advertising industry."
+    },
+    {
+      "id": 1052,
+      "title": "The HP Way: How Bill Hewlett and I Built Our Company",
+      "author": "David Packard",
+      "cover": "images/covers/1052.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20HP%20Way%3A%20How%20Bill%20Hewlett%20and%20I%20Built%20Our%20Company%20David%20Packard",
+      "isbn": "9780060845797",
+      "summary": "David Packard's account of how he and Bill Hewlett built HP with a revolutionary corporate culture."
+    },
+    {
+      "id": 1053,
+      "title": "The Woman I Wanted to Be",
+      "author": "Diane von Furstenberg",
+      "cover": "images/covers/1053.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Woman%20I%20Wanted%20to%20Be%20Diane%20von%20Furstenberg",
+      "isbn": "9781451651546",
+      "summary": "Fashion icon Diane von Furstenberg's candid memoir about her life, business, and self-discovery."
+    },
+    {
+      "id": 1054,
+      "title": "Thinking in Systems: A Primer",
+      "author": "Donella Meadows",
+      "cover": "images/covers/1054.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Thinking%20in%20Systems%3A%20A%20Primer%20Donella%20Meadows",
+      "isbn": "9781603580557",
+      "summary": "A foundational guide to understanding systems thinking and how to solve complex problems effectively."
+    },
+    {
+      "id": 1055,
+      "title": "The Pampered Chef: The Story of One of America's Most Beloved Companies",
+      "author": "Doris Christopher",
+      "cover": "images/covers/1055.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Pampered%20Chef%3A%20The%20Story%20of%20One%20of%20America%27s%20Most%20Beloved%20Companies%20Doris%20Christopher",
+      "isbn": "9780385515733",
+      "summary": "The story of Doris Christopher, who turned a basement startup into a highly successful direct-selling kitchenware company."
+    },
+    {
+      "id": 1056,
+      "title": "The Gift: 12 Lessons to Save Your Life",
+      "author": "Edith Eger",
+      "cover": "images/covers/1056.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Gift%3A%2012%20Lessons%20to%20Save%20Your%20Life%20Edith%20Eger",
+      "isbn": "9781982143091",
+      "summary": "Holocaust survivor Edith Eger shares psychological lessons on how to escape the mental prisons of our own making."
+    },
+    {
+      "id": 1057,
+      "title": "The Choice: Embrace the Possible Book",
+      "author": "Edith Eger",
+      "cover": "images/covers/1057.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Choice%3A%20Embrace%20the%20Possible%20Book%20Edith%20Eger",
+      "isbn": "9781501130786",
+      "summary": "Edith Eger's powerful memoir about surviving Auschwitz and her journey toward healing and helping others find freedom."
+    },
+    {
+      "id": 1058,
+      "title": "Pre-Suasion: A Revolutionary Way to Influence and Persuade",
+      "author": "Robert Cialdini",
+      "cover": "images/covers/1058.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Pre-Suasion%3A%20A%20Revolutionary%20Way%20to%20Influence%20and%20Persuade%20Robert%20Cialdini",
+      "isbn": "9781501109799",
+      "summary": "Robert Cialdini explores how to optimize the moments before delivering a message to maximize its persuasive impact."
+    },
+    {
+      "id": 1059,
+      "title": "Call Me Ted",
+      "author": "Ted Turner",
+      "cover": "images/covers/1059.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Call%20Me%20Ted%20Ted%20Turner",
+      "isbn": "9780446581899",
+      "summary": "The autobiography of media mogul Ted Turner, chronicling his bold business ventures like founding CNN."
+    },
+    {
+      "id": 1060,
+      "title": "Hershey: Milton S. Hershey’s Extraordinary Life of Wealth, Empire, and Utopian Dreams",
+      "author": "Michael D’Antonio",
+      "cover": "images/covers/1060.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Hershey%3A%20Milton%20S.%20Hershey%E2%80%99s%20Extraordinary%20Life%20of%20Wealth%2C%20Empire%2C%20and%20Utopian%20Dreams%20Michael%20D%E2%80%99Antonio",
+      "isbn": "9780743264099",
+      "summary": "The biography of Milton Hershey, exploring his creation of a chocolate empire and a utopian company town."
+    },
+    {
+      "id": 1061,
+      "title": "Influence: The Psychology of Persuasion",
+      "author": "Robert Cialdini",
+      "cover": "images/covers/1061.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Influence%3A%20The%20Psychology%20of%20Persuasion%20Robert%20Cialdini",
+      "isbn": "9780061241895",
+      "summary": "The classic text explaining the psychological principles of why people say 'yes' and how to apply them ethically."
+    },
+    {
+      "id": 1062,
+      "title": "Tim Cook: The Genius Who Took Apple to the Next Level",
+      "author": "Leander Kahney",
+      "cover": "images/covers/1062.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Tim%20Cook%3A%20The%20Genius%20Who%20Took%20Apple%20to%20the%20Next%20Level%20Leander%20Kahney",
+      "isbn": "9780525537601",
+      "summary": "A biography examining how Tim Cook stepped out of Steve Jobs' shadow to lead Apple to unprecedented heights."
+    },
+    {
+      "id": 1063,
+      "title": "Jony Ive: The Genius Behind Apple’s Greatest Products",
+      "author": "Leander Kahney",
+      "cover": "images/covers/1063.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Jony%20Ive%3A%20The%20Genius%20Behind%20Apple%E2%80%99s%20Greatest%20Products%20Leander%20Kahney",
+      "isbn": "9781591846178",
+      "summary": "The story of Apple's former chief design officer and his crucial role in creating the company's iconic products."
+    },
+    {
+      "id": 1064,
+      "title": "The Great Mental Models: General Thinking Concepts",
+      "author": "Shane Parrish",
+      "cover": "images/covers/1064.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Great%20Mental%20Models%3A%20General%20Thinking%20Concepts%20Shane%20Parrish",
+      "isbn": "9781999449001",
+      "summary": "A guide to foundational mental models that improve decision-making and critical thinking across various disciplines."
+    },
+    {
+      "id": 1065,
+      "title": "Big Mistakes: The Best Investors and Their Worst Investments",
+      "author": "Michael Batnick",
+      "cover": "images/covers/1065.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Big%20Mistakes%3A%20The%20Best%20Investors%20and%20Their%20Worst%20Investments%20Michael%20Batnick",
+      "isbn": "9781119366553",
+      "summary": "An engaging look at the worst financial mistakes made by some of the most legendary investors in history."
+    },
+    {
+      "id": 1066,
+      "title": "Normal People",
+      "author": "Sally Rooney",
+      "cover": "images/covers/1066.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Normal%20People%20%28Novel%29%20Sally%20Rooney",
+      "isbn": "9781984822185",
+      "summary": "A novel following the complex, evolving relationship between two young people in Ireland as they navigate adulthood."
+    },
+    {
+      "id": 1067,
+      "title": "What Do You Care What Other People Think?",
+      "author": "Richard Feynman",
+      "cover": "images/covers/1067.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=What%20Do%20You%20Care%20What%20Other%20People%20Think%3F%20Richard%20Feynman",
+      "isbn": "9780393355642",
+      "summary": "A collection of anecdotes and memories from the brilliant and eccentric physicist Richard Feynman."
+    },
+    {
+      "id": 1068,
+      "title": "Ultralearning: Master Hard Skills, Outsmart the Competition, and Accelerate Your Career",
+      "author": "Scott H. Young",
+      "cover": "images/covers/1068.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Ultralearning%3A%20Master%20Hard%20Skills%2C%20Outsmart%20the%20Competition%2C%20and%20Accelerate%20Your%20Career%20Scott%20H.%20Young",
+      "isbn": "9780062852687",
+      "summary": "A guide to mastering hard skills quickly and effectively through intense, self-directed learning strategies."
+    },
+    {
+      "id": 1069,
+      "title": "The Art of Thinking Clearly",
+      "author": "Rolf Dobelli",
+      "cover": "images/covers/1069.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Art%20of%20Thinking%20Clearly%20Rolf%20Dobelli",
+      "isbn": "9780062219695",
+      "summary": "A concise overview of common cognitive errors and biases to help readers make better, more rational decisions."
+    },
+    {
+      "id": 1070,
+      "title": "Mental Models: 30 Thinking Tools that Separate the Average From the Exceptional. Improved Decision-Making, Logical Analysis, and Problem-Solving.",
+      "author": "Peter Hollins",
+      "cover": "images/covers/1070.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Mental%20Models%3A%2030%20Thinking%20Tools%20that%20Separate%20the%20Average%20From%20the%20Exceptional.%20Improved%20Decision-Making%2C%20Logical%20Analysis%2C%20and%20Problem-Solving.%20Peter%20Hollins",
+      "isbn": "9781093915686",
+      "summary": "A collection of thinking tools designed to enhance logical analysis, problem-solving, and everyday decision-making."
+    },
+    {
+      "id": 1071,
+      "title": "The House of Dimon: How JPMorgan's Jamie Dimon Rose to the Top of the Financial World",
+      "author": "Patricia Crisafulli",
+      "cover": "images/covers/1071.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20House%20of%20Dimon%3A%20How%20JPMorgan%27s%20Jamie%20Dimon%20Rose%20to%20the%20Top%20of%20the%20Financial%20World%20Patricia%20Crisafulli",
+      "isbn": "9780470412961",
+      "summary": "A biography detailing Jamie Dimon's rise to power and his leadership of JPMorgan Chase."
+    },
+    {
+      "id": 1072,
+      "title": "Maybe You Should Talk to Someone",
+      "author": "Lori Gottlieb",
+      "cover": "images/covers/1072.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Maybe%20You%20Should%20Talk%20to%20Someone%20Lori%20Gottlieb",
+      "isbn": "9781328662057",
+      "summary": "A therapist's insightful and humorous memoir about her patients' struggles and her own experiences in therapy."
+    },
+    {
+      "id": 1073,
+      "title": "That Will Never Work: The Birth of Netflix and the Amazing Life of an Idea",
+      "author": "Marc Randolph",
+      "cover": "images/covers/1073.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1913068072/?tag=internetarchi-20",
+      "isbn": "9781913068073",
+      "summary": "Marc Randolph's entertaining inside story of the founding and chaotic early days of Netflix."
+    },
+    {
+      "id": 1074,
+      "title": "My (Underground) American Dream: My True Story as an Undocumented Immigrant Who Became a Wall Street Executive",
+      "author": "Julissa Arce",
+      "cover": "images/covers/1074.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=My%20%28Underground%29%20American%20Dream%3A%20My%20True%20Story%20as%20an%20Undocumented%20Immigrant%20Who%20Became%20a%20Wall%20Street%20Executive%20Julissa%20Arce",
+      "isbn": "9781455540266",
+      "summary": "The inspiring true story of an undocumented immigrant who secretly built a successful career on Wall Street."
+    },
+    {
+      "id": 1075,
+      "title": "Born Standing Up",
+      "author": "Steve Martin",
+      "cover": "images/covers/1075.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Born%20Standing%20Up%20Steve%20Martin",
+      "isbn": "9781416553656",
+      "summary": "Steve Martin's memoir chronicling his dedicated journey to becoming one of the most successful stand-up comedians ever."
+    },
+    {
+      "id": 1076,
+      "title": "My Remarkable Journey",
+      "author": "Larry King",
+      "cover": "images/covers/1076.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=My%20Remarkable%20Journey%20Larry%20King",
+      "isbn": 1602860866,
+      "summary": "Broadcaster Larry King's autobiography, sharing stories from his long and colorful career interviewing global figures."
+    },
+    {
+      "id": 1077,
+      "title": "Educated",
+      "author": "Tara Westover",
+      "cover": "images/covers/1077.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0399590501/?tag=internetarchi-20",
+      "isbn": "9780399590504",
+      "summary": "Tara Westover's gripping memoir of growing up in a strict, survivalist family and her transformative journey through education."
+    },
+    {
+      "id": 1078,
+      "title": "I Can't Make This Up: Life Lessons",
+      "author": "Kevin Hart",
+      "cover": "images/covers/1078.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=I%20Can%27t%20Make%20This%20Up%3A%20Life%20Lessons%20Kevin%20Hart",
+      "isbn": "9781501155567",
+      "summary": "Comedian Kevin Hart's memoir detailing his challenging upbringing and his relentless drive to achieve massive success."
+    },
+    {
+      "id": 1079,
+      "title": "Stay Interesting: I Don't Always Tell Stories About My Life, But When I Do They're True and Amazing",
+      "author": "Jonathan Goldsmith",
+      "cover": "images/covers/1079.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Stay%20Interesting%3A%20I%20Don%27t%20Always%20Tell%20Stories%20About%20My%20Life%2C%20But%20When%20I%20Do%20They%27re%20True%20and%20Amazing%20Jonathan%20Goldsmith",
+      "isbn": "9781101986233",
+      "summary": "The adventurous and unconventional life story of Jonathan Goldsmith, best known as 'The Most Interesting Man in the World.'"
+    },
+    {
+      "id": 1080,
+      "title": "A Man for All Markets: From Las Vegas to Wall Street, How I Beat the Dealer and the Market",
+      "author": "Edward O. Thorp",
+      "cover": "images/covers/1080.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1400067960/?tag=internetarchi-20",
+      "isbn": "9781400067961",
+      "summary": "The autobiography of Edward O. Thorp, a mathematician who revolutionized blackjack and pioneered quantitative investing."
+    },
+    {
+      "id": 1081,
+      "title": "Am I Being Too Subtle? The Adventures of a Business Maverick",
+      "author": "Sam Zell",
+      "cover": "images/covers/1081.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Am%20I%20Being%20Too%20Subtle%3F%20The%20Adventures%20of%20a%20Business%20Maverick%20Sam%20Zell",
+      "isbn": "9781591848233",
+      "summary": "Real estate mogul Sam Zell's candid memoir sharing his contrarian business philosophy and entrepreneurial journey."
+    },
+    {
+      "id": 1082,
+      "title": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
+      "author": "Susan Cain",
+      "cover": "images/covers/1082.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Quiet%3A%20The%20Power%20of%20Introverts%20in%20a%20World%20That%20Can%27t%20Stop%20Talking%20Susan%20Cain",
+      "isbn": "9780307352149",
+      "summary": "A deep dive into the power and hidden strengths of introverts in a society that often favors extroversion."
+    },
+    {
+      "id": 1083,
+      "title": "The Meaning of It All: Thoughts of a Citizen-Scientist",
+      "author": "Richard Feynman",
+      "cover": "images/covers/1083.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Meaning%20of%20It%20All%3A%20Thoughts%20of%20a%20Citizen-Scientist%20Richard%20Feynman",
+      "isbn": 465023940,
+      "summary": "Richard Feynman's reflections on the intersection of science, society, religion, and human intellectual humility."
+    },
+    {
+      "id": 1084,
+      "title": "Born a Crime",
+      "author": "Trevor Noah",
+      "cover": "images/covers/1084.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Born%20a%20Crime%20Trevor%20Noah",
+      "isbn": "9780399588174",
+      "summary": "Trevor Noah's poignant and hilarious memoir about growing up mixed-race in South Africa during and after apartheid."
+    },
+    {
+      "id": 1085,
+      "title": "Awkward: The Science of Why We're Socially Awkward and Why That's Awesome",
+      "author": "Ty Tashiro",
+      "cover": "images/covers/1085.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Awkward%3A%20The%20Science%20of%20Why%20We%27re%20Socially%20Awkward%20and%20Why%20That%27s%20Awesome%20Ty%20Tashiro",
+      "isbn": "9780062429155",
+      "summary": "A scientific exploration of why people are socially awkward and how those traits can actually lead to extraordinary achievements."
+    },
+    {
+      "id": 1086,
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "cover": "images/covers/1086.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Alchemist%20Paulo%20Coelho",
+      "isbn": "9780062315007",
+      "summary": "A philosophical novel about an Andalusian shepherd boy's mystical journey to find a worldly treasure and his personal legend."
+    },
+    {
+      "id": 1087,
+      "title": "The Undoing Project",
+      "author": "Michael Lewis",
+      "cover": "images/covers/1087.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Undoing%20Project%20Michael%20Lewis",
+      "isbn": "9780393254594",
+      "summary": "The story of the deep friendship and groundbreaking collaboration between psychologists Daniel Kahneman and Amos Tversky."
+    },
+    {
+      "id": 1088,
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "cover": "images/covers/1088.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Sapiens%3A%20A%20Brief%20History%20of%20Humankind%20Yuval%20Noah%20Harari",
+      "isbn": "9780062316097",
+      "summary": "A sweeping overview of the history of the human species, exploring how biology and culture shaped our evolution."
+    },
+    {
+      "id": 1089,
+      "title": "The Richest Man in Babylon",
+      "author": "George Samuel Clason",
+      "cover": "images/covers/1089.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Richest%20Man%20in%20Babylon%20George%20Samuel%20Clason",
+      "isbn": "9780451205360",
+      "summary": "A classic collection of financial parables set in ancient Babylon, offering timeless advice on wealth building."
+    },
+    {
+      "id": 1090,
+      "title": "The Alchemy of Finance",
+      "author": "George Soros",
+      "cover": "images/covers/1090.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Alchemy%20of%20Finance%20George%20Soros",
+      "isbn": 471445495,
+      "summary": "George Soros explains his theory of reflexivity and provides an inside look at his highly successful investment strategies."
+    },
+    {
+      "id": 1091,
+      "title": "The Manual of Ideas: The Proven Framework for Finding the Best Value Investments",
+      "author": "John Mihaljevic",
+      "cover": "images/covers/1091.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1119052416/?tag=internetarchi-20",
+      "isbn": 1118083652,
+      "summary": "A comprehensive framework for finding and analyzing value investments, drawing on the strategies of legendary investors."
+    },
+    {
+      "id": 1092,
+      "title": "Connected: The Surprising Power of Our Social Networks and How They Shape Our Lives",
+      "author": "James H. Fowler",
+      "cover": "images/covers/1092.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Connected%3A%20The%20Surprising%20Power%20of%20Our%20Social%20Networks%20and%20How%20They%20Shape%20Our%20Lives%20James%20H.%20Fowler",
+      "isbn": "9780316036146",
+      "summary": "An exploration of how our social networks profoundly influence our behavior, health, and success in surprising ways."
+    },
+    {
+      "id": 1093,
+      "title": "The 10X Rule: The Only Difference Between Success and Failure",
+      "author": "Grant Cardone",
+      "cover": "images/covers/1093.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%2010X%20Rule%3A%20The%20Only%20Difference%20Between%20Success%20and%20Failure%20Grant%20Cardone",
+      "isbn": "9780470627600",
+      "summary": "Grant Cardone's energetic guide to achieving massive success by taking ten times more action than you think is necessary."
+    },
+    {
+      "id": 1094,
+      "title": "Autobiography of Gurdon Wallace Wattles Genealogy",
+      "author": "Gurdon Wallace Wattles",
+      "cover": "images/covers/1094.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Autobiography%20of%20Gurdon%20Wallace%20Wattles%20Genealogy%20Gurdon%20Wallace%20Wattles",
+      "isbn": "9781014107220",
+      "summary": "A personal family history and genealogical record compiled by businessman Gurdon Wallace Wattles."
+    },
+    {
+      "id": 1095,
+      "title": "The Education of a Value Investor: My Transformative Quest for Wealth, Wisdom, and Enlightenment",
+      "author": "Guy Spier",
+      "cover": "images/covers/1095.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Education%20of%20a%20Value%20Investor%3A%20My%20Transformative%20Quest%20for%20Wealth%2C%20Wisdom%2C%20and%20Enlightenment%20Guy%20Spier",
+      "isbn": "9781137278814",
+      "summary": "A memoir detailing a Wall Street investor's spiritual and ethical transformation into a Warren Buffett-style value investor."
+    },
+    {
+      "id": 1096,
+      "title": "The Personal MBA: Master the Art of Business",
+      "author": "Josh Kaufman",
+      "cover": "images/covers/1096.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Personal%20MBA%3A%20Master%20the%20Art%20of%20Business%20Josh%20Kaufman",
+      "isbn": "9781591843528",
+      "summary": "A comprehensive guide distilling core business concepts for those looking to master business without business school."
+    },
+    {
+      "id": 1097,
+      "title": "Common Stocks and Uncommon Profits",
+      "author": "Phil Fisher",
+      "cover": "images/covers/1097.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Common%20Stocks%20and%20Uncommon%20Profits%20Phil%20Fisher",
+      "isbn": "9780471119272",
+      "summary": "Phil Fisher's classic investment text emphasizing qualitative analysis and finding companies with exceptional growth potential."
+    },
+    {
+      "id": 1098,
+      "title": "The Warren Buffett Way",
+      "author": "Robert G. Hagstrom",
+      "cover": "images/covers/1098.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Warren%20Buffett%20Way%20Robert%20G.%20Hagstrom",
+      "isbn": "9781118503256",
+      "summary": "A detailed breakdown of the investment principles and strategies utilized by the legendary investor Warren Buffett."
+    },
+    {
+      "id": 1099,
+      "title": "Quantum Man: Richard Feynman's Life in Science",
+      "author": "Lawrence M. Krauss",
+      "cover": "images/covers/1099.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Quantum%20Man%3A%20Richard%20Feynman%27s%20Life%20in%20Science%20Lawrence%20M.%20Krauss",
+      "isbn": "9780393064711",
+      "summary": "A biography of physicist Richard Feynman, focusing on his profound contributions to quantum mechanics and science."
+    },
+    {
+      "id": 1100,
+      "title": "The Pleasure of Finding Things Out: The Best Short Works of Richard Feynman",
+      "author": "Richard Feynman",
+      "cover": "images/covers/1100.jpg",
+      "amazonLink": "https://www.amazon.com/dp/160671015X/?tag=internetarchi-20",
+      "isbn": "9780465023950",
+      "summary": "A collection of Richard Feynman's best short works, interviews, and speeches on science and life."
+    },
+    {
+      "id": 1101,
+      "title": "Spaceman: An Astronaut's Unlikely Journey to Unlock the Secrets of the Universe",
+      "author": "Michael J. Massimino",
+      "cover": "images/covers/1101.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Spaceman%3A%20An%20Astronaut%27s%20Unlikely%20Journey%20to%20Unlock%20the%20Secrets%20of%20the%20Universe%20Michael%20J.%20Massimino",
+      "isbn": "9781101903544",
+      "summary": "Michael J. Massimino's memoir detailing his improbable journey from a working-class background to becoming a NASA astronaut."
+    },
+    {
+      "id": 1102,
+      "title": "Panzer Commander: The Memoirs of Colonel Hans Von Luck",
+      "author": "Hans von Luck",
+      "cover": "images/covers/1102.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Panzer%20Commander%3A%20The%20Memoirs%20of%20Colonel%20Hans%20Von%20Luck%20Hans%20von%20Luck",
+      "isbn": "9780440208020",
+      "summary": "The gripping memoirs of Hans von Luck, a German tank commander who served on multiple fronts during WWII."
+    },
+    {
+      "id": 1103,
+      "title": "The Disappearing Spoon: And Other True Tales of Madness, Love, and the History of the World from the Periodic Table of the Elements",
+      "author": "Sam Kean",
+      "cover": "images/covers/1103.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Disappearing%20Spoon%3A%20And%20Other%20True%20Tales%20of%20Madness%2C%20Love%2C%20and%20the%20History%20of%20the%20World%20from%20the%20Periodic%20Table%20of%20the%20Elements%20Sam%20Kean",
+      "isbn": "9780316051644",
+      "summary": "Fascinating true stories of madness, love, and history connected to the elements of the periodic table."
+    },
+    {
+      "id": 1104,
+      "title": "Surely You're Joking, Mr. Feynman!",
+      "author": "Richard Feynman",
+      "cover": "images/covers/1104.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Surely%20You%27re%20Joking%2C%20Mr.%20Feynman%21%20Richard%20Feynman",
+      "isbn": "9780393316049",
+      "summary": "A delightful and quirky collection of autobiographical anecdotes from Nobel Prize-winning physicist Richard Feynman."
+    },
+    {
+      "id": 1105,
+      "title": "How to Fail at Almost Everything and Still Win Big: Kind of the Story of My Life",
+      "author": "Scott Adams",
+      "cover": "images/covers/1105.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=How%20to%20Fail%20at%20Almost%20Everything%20and%20Still%20Win%20Big%3A%20Kind%20of%20the%20Story%20of%20My%20Life%20Scott%20Adams",
+      "isbn": "9781591846918",
+      "summary": "Dilbert creator Scott Adams shares his unconventional path to success through continuous failure and system-building."
+    },
+    {
+      "id": 1106,
+      "title": "Man's Search for Meaning",
+      "author": "Viktor Frankl",
+      "cover": "images/covers/1106.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Man%27s%20Search%20for%20Meaning%20Viktor%20Frankl",
+      "isbn": 9780807014271,
+      "summary": "Psychiatrist Viktor Frankl's profound memoir of surviving Nazi concentration camps and his psychological theory of logotherapy."
+    },
+    {
+      "id": 1107,
+      "title": "Buffett: The Making of an American Capitalist",
+      "author": "Roger Lowenstein",
+      "cover": "images/covers/1107.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Buffett%3A%20The%20Making%20of%20an%20American%20Capitalist%20Roger%20Lowenstein",
+      "isbn": "9780812979275",
+      "summary": "A comprehensive biography exploring the life, investment philosophy, and extraordinary success of Warren Buffett."
+    },
+    {
+      "id": 1108,
+      "title": "How Not to Be Wrong",
+      "author": "Jordan Ellenberg",
+      "cover": "images/covers/1108.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=How%20Not%20to%20Be%20Wrong%20Jordan%20Ellenberg",
+      "isbn": "9781594205224",
+      "summary": "An engaging exploration of how mathematical thinking can help us understand the world and avoid hidden pitfalls."
+    },
+    {
+      "id": 1109,
+      "title": "Wild Company: The Untold Story of Banana Republic",
+      "author": "Mel Ziegler and Patricia Ziegler",
+      "cover": "images/covers/1109.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1451683480/?tag=internetarchi-20",
+      "isbn": "9781451683486",
+      "summary": "The adventurous and chaotic story of the married couple who founded the iconic clothing brand Banana Republic."
+    },
+    {
+      "id": 1110,
+      "title": "Skeptic: Viewing the World with a Rational Eye",
+      "author": "Michael Shermer",
+      "cover": "images/covers/1110.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Skeptic%3A%20Viewing%20the%20World%20with%20a%20Rational%20Eye%20Michael%20Shermer",
+      "isbn": "9781627791380",
+      "summary": "A collection of essays advocating for rational thinking and scientific skepticism in a world filled with pseudoscience and irrationality."
+    },
+    {
+      "id": 1111,
+      "title": "Candide",
+      "author": "Voltaire",
+      "cover": "images/covers/1111.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Candide%20Voltaire",
+      "isbn": "9780140440041",
+      "summary": "Voltaire's satirical masterpiece critiquing philosophical optimism through the absurd and tragic adventures of its naive protagonist."
+    },
+    {
+      "id": 1112,
+      "title": "Shoe Dog: A Memoir by the Creator of Nike",
+      "author": "Phil Knight",
+      "cover": "images/covers/1112.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Shoe%20Dog%3A%20A%20Memoir%20by%20the%20Creator%20of%20Nike%20Phil%20Knight",
+      "isbn": "9781501135910",
+      "summary": "A deeply personal memoir by Phil Knight, detailing the chaotic and inspiring journey of building the Nike empire."
+    },
+    {
+      "id": 1113,
+      "title": "Men and Rubber: The Story of Business",
+      "author": "Harvey S. Firestone",
+      "cover": "images/covers/1113.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Men%20and%20Rubber%3A%20The%20Story%20of%20Business%20Harvey%20S.%20Firestone",
+      "isbn": 9780766165786,
+      "summary": "Harvey Firestone's autobiography recounting his entrepreneurial journey and the founding of the Firestone Tire and Rubber Company."
+    },
+    {
+      "id": 1114,
+      "title": "40 Chances: Finding Hope in a Hungry World",
+      "author": "Howard Graham Buffett",
+      "cover": "images/covers/1114.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=40%20Chances%3A%20Finding%20Hope%20in%20a%20Hungry%20World%20Howard%20Graham%20Buffett",
+      "isbn": "9781451687866",
+      "summary": "Howard G. Buffett shares his experiences and strategies for tackling global hunger and poverty through philanthropy."
+    },
+    {
+      "id": 1115,
+      "title": "Who Moved My Cheese?",
+      "author": "Spencer Johnson",
+      "cover": "images/covers/1115.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Who%20Moved%20My%20Cheese%3F%20Spencer%20Johnson",
+      "isbn": "9780399144462",
+      "summary": "A famous business fable that provides simple but profound lessons on anticipating and adapting to change."
+    },
+    {
+      "id": 1116,
+      "title": "The go-go years",
+      "author": "John Brooks",
+      "cover": "images/covers/1116.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20go-go%20years%20John%20Brooks",
+      "isbn": "9780471357551",
+      "summary": "A historical account of the speculative frenzy and speculative excesses on Wall Street during the 1960s."
+    },
+    {
+      "id": 1117,
+      "title": "Business Adventures",
+      "author": "John Brooks",
+      "cover": "images/covers/1117.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Business%20Adventures%20John%20Brooks",
+      "isbn": "9781497644892",
+      "summary": "A collection of classic New Yorker articles detailing notable corporate dramas and financial events in American business history."
+    },
+    {
+      "id": 1118,
+      "title": "The Outsiders : Eight Unconventional CEOs and Their Radically Rational Blueprint for Success",
+      "author": "William Thorndike",
+      "cover": "images/covers/1118.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Outsiders%20%3A%20Eight%20Unconventional%20CEOs%20and%20Their%20Radically%20Rational%20Blueprint%20for%20Success%20William%20Thorndike",
+      "isbn": "9781422162675",
+      "summary": "An analysis of eight unconventional CEOs who used radically rational capital allocation to achieve exceptional long-term returns."
+    },
+    {
+      "id": 1119,
+      "title": "The Black Swan",
+      "author": "Nassim Nicholas Taleb",
+      "cover": "images/covers/1119.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Black%20Swan%20Nassim%20Nicholas%20Taleb",
+      "isbn": "9781400063512",
+      "summary": "A groundbreaking exploration of the massive impact of highly improbable and unpredictable outlier events on history and finance."
+    },
+    {
+      "id": 1120,
+      "title": "The Most Important Thing: Uncommon Sense for the Thoughtful Investor",
+      "author": "Howard S. Marks",
+      "cover": "images/covers/1120.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Most%20Important%20Thing%3A%20Uncommon%20Sense%20for%20the%20Thoughtful%20Investor%20Howard%20S.%20Marks",
+      "isbn": "9780231153683",
+      "summary": "Howard Marks distills his renowned investment memos into essential lessons on risk, market cycles, and value investing."
+    },
+    {
+      "id": 1121,
+      "title": "Onward : How Starbucks Fought for Its Life Without Losing Its Soul",
+      "author": "Howard Schultz",
+      "cover": "images/covers/1121.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Onward%20%3A%20How%20Starbucks%20Fought%20for%20Its%20Life%20Without%20Losing%20Its%20Soul%20Howard%20Schultz",
+      "isbn": 9781605292885,
+      "summary": "Howard Schultz's firsthand account of his return as Starbucks CEO to rescue the company and restore its core values."
+    },
+    {
+      "id": 1122,
+      "title": "Foundation and Empire",
+      "author": "Isaac Asimov",
+      "cover": "images/covers/1122.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Foundation%20and%20Empire%20Isaac%20Asimov",
+      "isbn": "9780553293371",
+      "summary": "The second novel in Isaac Asimov's epic science fiction series about the struggle to preserve human knowledge and civilization."
+    },
+    {
+      "id": 1123,
+      "title": "Jack: Straight From the Gut",
+      "author": "Jack Welch",
+      "cover": "images/covers/1123.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Jack%3A%20Straight%20From%20the%20Gut%20Jack%20Welch",
+      "isbn": 446690686,
+      "summary": "The candid autobiography of Jack Welch, sharing his aggressive management style and massive success as CEO of GE."
+    },
+    {
+      "id": 1124,
+      "title": "Charlie Munger : The Complete Investor",
+      "author": "Tren Griffin",
+      "cover": "images/covers/1124.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=Charlie%20Munger%20%3A%20The%20Complete%20Investor%20Tren%20Griffin",
+      "isbn": "9780231170987",
+      "summary": "A compilation and analysis of the investing wisdom, mental models, and life philosophy of billionaire Charlie Munger."
+    },
+    {
+      "id": 1125,
+      "title": "Damn Right! : Behind the Scenes with Berkshire Hathaway Billionaire Charlie Munger",
+      "author": "Janet Lowe",
+      "cover": "images/covers/1125.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0471244732/?tag=internetarchi-20",
+      "isbn": "9780471244738",
+      "summary": "The authorized biography of Charlie Munger, detailing his life, his partnership with Warren Buffett, and his formidable intellect."
+    },
+    {
+      "id": 1126,
+      "title": "The Fish That Ate the Whale: The Life and Times of America's Banana King",
+      "author": "Rich Cohen",
+      "cover": "images/covers/1126.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0374299277/?tag=internetarchi-20",
+      "isbn": "9780374299279",
+      "summary": "The fascinating biography of Sam Zemurray, the 'Banana King' who rose from a penniless immigrant to corporate titan."
+    },
+    {
+      "id": 1127,
+      "title": "The Obstacle Is the Way",
+      "author": "Ryan Holiday",
+      "cover": "images/covers/1127.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1781251495/?tag=internetarchi-20",
+      "isbn": "9781591846352",
+      "summary": "A modern introduction to Stoicism, teaching how to turn adversity and challenges into opportunities for growth and success."
+    },
+    {
+      "id": 1128,
+      "title": "The Great Escape",
+      "author": "Paul Brickhill",
+      "cover": "images/covers/1128.jpg",
+      "amazonLink": "https://www.amazon.com/s?k=The%20Great%20Escape%20Paul%20Brickhill",
+      "isbn": "9780393325799",
+      "summary": "The gripping true story of the meticulously planned mass breakout by Allied prisoners from a German POW camp during WWII."
+    },
+    {
+      "id": 1129,
+      "title": "The First Billion Is the Hardest: Reflections on a Life of Comebacks and America's Energy Future",
+      "author": "T. Boone Pickens",
+      "cover": "images/covers/1129.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0307396010/?tag=internetarchi-20",
+      "isbn": "9780307396013",
+      "summary": "Oil tycoon T. Boone Pickens shares his life story and his vision for America's energy independence."
+    },
+    {
+      "id": 1130,
+      "title": "The Other Wes Moore: One Name, Two Fates",
+      "author": "Wes Moore",
+      "cover": "images/covers/1130.jpg",
+      "amazonLink": "https://www.amazon.com/dp/0385528191/?tag=internetarchi-20",
+      "isbn": "9780385528191",
+      "summary": "A powerful narrative exploring the divergent paths of two men with the same name, growing up in similar neighborhoods."
+    },
+    {
+      "id": 1131,
+      "title": "My Life: Queen of the Court",
+      "author": "Serena Williams",
+      "cover": "images/covers/1131.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1847375448/?tag=internetarchi-20",
+      "isbn": 1847375448,
+      "summary": "Serena Williams’ journey from Compton to tennis icon: family, grit, setbacks, pressure, controversy, and mental toughness."
+    }
+  ],
+  "home": {
+    "Name": "Charles M. Hershey",
+    "Bio": "Personal website of Charles M. Hershey showcasing bookshelf and LinkedIn resume.",
+    "ImageURL": "/WebsiteProfilePhoto/profile.png"
+  }
+}

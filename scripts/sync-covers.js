@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Use your raw GOOGLE_SCRIPT_URL to bypass Cloudflare's bot protection
-const API_URL = process.env.API_URL || 'https://script.google.com/macros/s/YOUR_LONG_LINK_HERE/exec'; 
+const API_URL = process.env.API_URL || 'https://www.charlesmhershey.com/api/books'; 
 const COVERS_DIR = path.join(__dirname, '../images/covers');
 const BACKUP_PATH = path.join(__dirname, '../backup.json');
 
@@ -19,7 +19,6 @@ async function syncDataAndCovers() {
     try {
         console.log(`Fetching latest database JSON from ${API_URL}...`);
         
-        // We use native fetch (available in Node 18+)
         const response = await fetch(API_URL);
         const data = await response.json();
 
@@ -28,7 +27,6 @@ async function syncDataAndCovers() {
             
             for (let book of data.books) {
                 if (book.cover && book.cover.includes('drive.google.com')) {
-                    // Extract ID and build local filename
                     const filename = `${book.id}.jpg`;
                     const filepath = path.join(COVERS_DIR, filename);
                     
