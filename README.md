@@ -4,10 +4,12 @@ A clean, lightning-fast personal website featuring a dynamic bookshelf, a glassm
 
 ## 🚀 Features
 * **Live Book Tracker Integration:** Use a Google Sheet to track your reading list. Any book you add to the spreadsheet automatically and instantly updates on your live website.
+* **Privacy Controls:** Easily hide specific books from your public website using a simple "Show/Hide" dropdown in your spreadsheet.
 * **Smart Sorting & Searching:** Filter by title or author instantly entirely client-side.
+* **Resilient Image Loading:** Automatically falls back to clean placeholder images if a user's browser (like Chrome Incognito or strict ad-blockers) blocks Google Drive thumbnails.
 * **AI Integration:** One-click ChatGPT prompts for book summaries.
 * **Serverless Contact Form:** Sends messages straight to your email/sheet.
-* **Minimalist UI:** Apple-inspired design with shimmer loading effects and glassmorphism.
+* **Minimalist UI:** Apple-inspired design with shimmer loading effects, diagnostic error UIs, and glassmorphism.
 * **Modular Architecture:** Utilizes split CSS (`global.css`, `home.css`, `bookshelf.css`) and a vanilla JS Web Component (`nav.js`) for easy maintenance.
 * **Secure Endpoints:** API URLs are hidden using Cloudflare Secret Environment Variables.
 
@@ -30,6 +32,7 @@ This site uses a Google Sheet as a free, easy-to-edit CMS and reading tracker. W
    * Column F: `ISBN`
    * Column G: *(Leave blank or use for notes)*
    * Column H: `Summary`
+   * **Column I: `Visibility` (Set to "Hide" to keep a book private, or "Show" to make it public on your site)**
 4. **In the "HomePage" tab**, create two columns to control your homepage text dynamically:
    * Row 1: Column A = `Name`, Column B = `[Your Name]`
    * Row 2: Column A = `Bio`, Column B = `[Your Bio Text]`
@@ -39,12 +42,12 @@ The book covers displayed on this site are stored in **Google Drive** and automa
 1. Create a folder in your Google Drive named exactly **Verified Book Covers**. 
 2. Upload your cover images into this folder. Make sure the folder's sharing permissions are set to "Anyone with the link."
 3. **Adding New Covers:** When adding a new book to your spreadsheet tracker, simply type the exact filename (e.g., `harry-potter.jpg`) into Column D. 
-4. *How it works:* The Google Apps Script API will automatically search the "Verified Book Covers" folder, find the matching file, and generate a lightning-fast, 250px-wide thumbnail on the fly. You do *not* need to manually paste heavy image links!
+4. *How it works:* The Google Apps Script API will automatically search the "Verified Book Covers" folder, find the matching file, and generate a lightning-fast, 250px-wide thumbnail on the fly. You do *not* need to manually paste heavy image links! (If the image is blocked by ad-blockers, the site will safely render a "No Cover" placeholder).
 
 ### Step 3: Create the Google Apps Script (The API)
 You need to expose your Google Sheet as a JSON API so your website can read your book tracker.
 1. In your Google Sheet, click **Extensions > Apps Script**.
-2. Paste the `doGet()` and `doPost()` script to output your sheet data as JSON and accept form submissions.
+2. Paste the `Code.gs` script to output your sheet data as JSON and accept form submissions.
 3. Click **Deploy > New Deployment**.
 4. Choose **Web app**. Set "Execute as" to **Me** and "Who has access" to **Anyone**.
 5. Copy the generated **Web App URL**.
