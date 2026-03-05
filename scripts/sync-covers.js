@@ -4,7 +4,7 @@ const https = require('https');
 
 // Expects your Cloudflare API url to fetch the raw data (e.g., https://yourdomain.com/api/books) 
 // Or you can use your raw GOOGLE_SCRIPT_URL
-const API_URL = process.env.API_URL; 
+const API_URL = process.env.API_URL || 'https://www.charlesmhershey.com/api/books';
 const COVERS_DIR = path.join(__dirname, '../images/covers');
 const BACKUP_PATH = path.join(__dirname, '../backup.json');
 
