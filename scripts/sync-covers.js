@@ -1,10 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 
-// Expects your Cloudflare API url to fetch the raw data (e.g., https://yourdomain.com/api/books) 
-// Or you can use your raw GOOGLE_SCRIPT_URL
-const API_URL = process.env.API_URL || 'https://www.charlesmhershey.com/api/books';
+// Use your raw GOOGLE_SCRIPT_URL to bypass Cloudflare's bot protection
+const API_URL = process.env.API_URL || 'https://script.google.com/macros/s/YOUR_LONG_LINK_HERE/exec'; 
 const COVERS_DIR = path.join(__dirname, '../images/covers');
 const BACKUP_PATH = path.join(__dirname, '../backup.json');
 
@@ -20,6 +18,7 @@ async function syncDataAndCovers() {
 
     try {
         console.log(`Fetching latest database JSON from ${API_URL}...`);
+        
         // We use native fetch (available in Node 18+)
         const response = await fetch(API_URL);
         const data = await response.json();
@@ -55,24 +54,21 @@ async function syncDataAndCovers() {
     }
 }
 
-// Promise wrapper to handle downloading binary image data via HTTPS
-function downloadImage(url, filepath) {
-    return new Promise((resolve, reject) => {
-        if (fs.existsSync(filepath)) {
-            resolve(); // Skip if we already downloaded it previously
-            return;
-        }
-        https.get(url, (res) => {
-            if (res.statusCode === 200) {
-                res.pipe(fs.createWriteStream(filepath))
-                   .on('error', reject)
-                   .once('close', () => resolve(filepath));
-            } else {
-                res.resume();
-                reject(new Error(`Status Code: ${res.statusCode}`));
-            }
-        }).on('error', reject);
-    });
+// Smarter download function that follows Google's redirects
+async function downloadImage(url, filepath) {
+    if (fs.existsSync(filepath)) {
+        return; // Skip if we already downloaded it previously
+    }
+    
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+        throw new Error(`Status Code: ${response.status}`);
+    }
+    
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    fs.writeFileSync(filepath, buffer);
 }
 
 syncDataAndCovers();
