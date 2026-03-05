@@ -23,16 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
             
-            // Only show if the user is scrolling UP and is past the 350px mark
             if (currentScrollY < lastScrollY && currentScrollY > 350) {
                 backToTopBtn.classList.add('is-visible');
             } else {
-                // Hide if scrolling DOWN or near the top
                 backToTopBtn.classList.remove('is-visible');
             }
             
             lastScrollY = currentScrollY;
-        }, { passive: true }); // passive: true improves scroll performance
+        }, { passive: true });
 
         // Smooth scroll back to top when clicked
         backToTopBtn.addEventListener('click', () => {
@@ -44,78 +42,63 @@ document.addEventListener("DOMContentLoaded", () => {
 async function fetchBooks() {
     const container = document.getElementById('bookshelf');
     
-    // 1. Instantly show the Loading Spinner
+    // Instantly show the Loading Spinner (will likely disappear too fast to see now!)
     container.innerHTML = `
         <div class="loader-container">
             <div class="spinner"></div>
         </div>
     `;
 
-    try {
-        // --- PHASE 1: Session Storage Cache ---
-        const cachedData = sessionStorage.getItem('bookshelfData');
-        if (cachedData) {
-            const data = JSON.parse(cachedData);
-            allBooks = data.books ? data.books : data;
-            filterAndSortBooks();
-            return; // Exit early since we have the data locally
-        }
-
-        // Attempt to fetch live data
-        const response = await fetch('/api/books');
-        
-        if (!response.ok) {
-            if (response.status === 404) throw new Error("API Endpoint Not Found (404). Check Cloudflare routing.");
-            if (response.status === 500) throw new Error("Server Error (500). Cloudflare failed to fetch the Google Script URL.");
-            throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
-        }
-
-        let data;
-        try {
-            data = await response.json();
-        } catch (jsonError) {
-            throw new Error("Invalid JSON returned. Your Google Script might not be deployed as 'Anyone' or the URL is incorrect.");
-        }
-        
+    // Helper function to render data
+    const loadDataIntoView = (data) => {
         allBooks = data.books ? data.books : data;
-        
-        if (!allBooks || allBooks.length === 0) {
-            throw new Error("API connection successful, but no books were found in the database. Ensure your Google Sheet has data.");
-        }
-
-        // Save to cache for the session
-        sessionStorage.setItem('bookshelfData', JSON.stringify(data));
-        filterAndSortBooks(); 
-
-    } catch (error) {
-        console.warn("Live API failed, attempting fallback...", error);
-        
-        // --- PHASE 1: Local Fallback (backup.json) ---
-        try {
-            const fallbackResponse = await fetch('/backup.json');
-            if (!fallbackResponse.ok) throw new Error("Local backup.json not found.");
-            
-            const fallbackData = await fallbackResponse.json();
-            
-            // Save fallback to cache so we don't keep trying to fetch the broken API this session
-            sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));
-            allBooks = fallbackData.books ? fallbackData.books : fallbackData;
+        if (allBooks && allBooks.length > 0) {
             filterAndSortBooks();
+        }
+    };
+
+    // --- PHASE 1: LOCAL-FIRST (Stale Data) ---
+    const cachedData = sessionStorage.getItem('bookshelfData');
+    if (cachedData) {
+        // Load immediately from the user's browser cache if available
+        loadDataIntoView(JSON.parse(cachedData));
+    } else {
+        try {
+            // Fetch the lightning-fast local backup on first load
+            const fallbackResponse = await fetch('/backup.json');
+            if (fallbackResponse.ok) {
+                const fallbackData = await fallbackResponse.json();
+                loadDataIntoView(fallbackData);
+            }
+        } catch (err) {
+            console.warn("Could not load local backup.json:", err);
+        }
+    }
+
+    // --- PHASE 2: BACKGROUND REVALIDATION (Live Data) ---
+    try {
+        const liveResponse = await fetch('/api/books');
+        
+        if (liveResponse.ok) {
+            const liveData = await liveResponse.json();
+            const newStringified = JSON.stringify(liveData);
             
-        } catch (fallbackError) {
-            console.error("Database connection AND local fallback failed:", fallbackError);
-            
-            // Graceful error UI that prints both specific error messages for troubleshooting
+            // Only update the screen if the live database is DIFFERENT from our local/cached data
+            if (newStringified !== sessionStorage.getItem('bookshelfData')) {
+                sessionStorage.setItem('bookshelfData', newStringified);
+                loadDataIntoView(liveData);
+                console.log("Background sync complete: New books found and added to the shelf.");
+            }
+        }
+    } catch (error) {
+        console.warn("Live API background sync failed. Continuing to use local data.", error);
+        
+        // Only show an error if absolutely no data loaded at all
+        if (allBooks.length === 0) {
             container.innerHTML = `
                 <div class="error-container">
                     <h2 style="color: #1d1d1f; font-weight: 600; margin-bottom: 0.5rem;">Library Unavailable</h2>
                     <p style="color: #86868b; font-size: 1.05rem; margin-bottom: 1.5rem;">We couldn't load the books from the live server or the local backup.</p>
-                    
-                    <div style="background-color: #ffebee; color: #c62828; padding: 16px; border-radius: 8px; border: 1px solid #ffcdd2; font-family: monospace; font-size: 0.9rem; text-align: left; display: inline-block; max-width: 100%; word-break: break-word;">
-                        <strong>Diagnostic Error:</strong><br>
-                        Live: ${error.message}<br>
-                        Backup: ${fallbackError.message}
-                    </div>
                 </div>
             `;
         }
@@ -144,7 +127,7 @@ function filterAndSortBooks() {
         filtered.sort((a, b) => (b.author || "").localeCompare(a.author || ""));
     }
 
-    // --- PHASE 1: Reset for Chunked Rendering ---
+    // Reset for Chunked Rendering
     currentFilteredBooks = filtered;
     displayCount = 0;
     
@@ -171,7 +154,7 @@ function setupIntersectionObserver(anchor) {
         if (entries[0].isIntersecting) {
             loadMoreBooks();
         }
-    }, { rootMargin: "400px" }); // Pre-load when user is 400px away from the bottom
+    }, { rootMargin: "400px" });
 
     scrollObserver.observe(anchor);
 }
@@ -277,8 +260,6 @@ function renderBooks(booksChunk) {
         }
 
         card.appendChild(body);
-        
-        // Append instead of clear to support endless scroll
         container.appendChild(card);
     });
 }
