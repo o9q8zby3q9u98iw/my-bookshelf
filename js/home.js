@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === modal) modal.classList.remove('is-open');
     });
 
-    // 2. Fetch Dynamic Data (Loads quietly in the background)
+    // 2. Fetch Dynamic Data (Local-First Stale-While-Revalidate)
     const loadDynamicData = async () => {
         const updateHomeUI = (homeData) => {
             if (homeData) {
@@ -32,38 +32,40 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        try {
-            // --- PHASE 1: Check cache first ---
-            const cachedData = sessionStorage.getItem('bookshelfData');
-            if (cachedData) {
-                updateHomeUI(JSON.parse(cachedData).home);
-                return; 
-            }
-
-            // Otherwise, fetch live
-            const response = await fetch('/api/books');
-            if (!response.ok) throw new Error("API failed");
-            const data = await response.json();
-            
-            sessionStorage.setItem('bookshelfData', JSON.stringify(data));
-            updateHomeUI(data.home);
-            
-        } catch (err) {
-            console.warn("Live dynamic data failed, attempting fallback:", err);
-            
-            // --- PHASE 1: Try local backup.json ---
+        // --- PHASE 1: Try cache or fast local backup first ---
+        const cachedData = sessionStorage.getItem('bookshelfData');
+        if (cachedData) {
+            updateHomeUI(JSON.parse(cachedData).home);
+        } else {
             try {
                 const fallbackResponse = await fetch('/backup.json');
-                const fallbackData = await fallbackResponse.json();
-                
-                // Cache the fallback so we don't hit the failing API again this session
-                sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));
-                updateHomeUI(fallbackData.home);
-            } catch (fallbackErr) {
-                console.error("Could not load dynamic home data from API or Backup", fallbackErr);
+                if (fallbackResponse.ok) {
+                    const fallbackData = await fallbackResponse.json();
+                    updateHomeUI(fallbackData.home);
+                }
+            } catch (err) {
+                console.warn("Could not load local backup on home:", err);
             }
         }
+
+        // --- PHASE 2: Background sync with live API ---
+        try {
+            const liveResponse = await fetch('/api/books');
+            if (liveResponse.ok) {
+                const liveData = await liveResponse.json();
+                const newStringified = JSON.stringify(liveData);
+                
+                // Only update screen if live data differs from current state
+                if (newStringified !== sessionStorage.getItem('bookshelfData')) {
+                    sessionStorage.setItem('bookshelfData', newStringified);
+                    updateHomeUI(liveData.home);
+                }
+            }
+        } catch (err) {
+            console.warn("Background home data sync failed. Using local.", err);
+        }
     };
+    
     loadDynamicData();
 
     // 3. Handle Email Form Submit
