@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
 async function fetchBooks() {
     const container = document.getElementById('bookshelf');
     
-    // Instantly show the Loading Spinner (will likely disappear too fast to see now!)
     container.innerHTML = `
         <div class="loader-container">
             <div class="spinner"></div>
@@ -58,17 +57,22 @@ async function fetchBooks() {
     };
 
     // --- PHASE 1: LOCAL-FIRST (Stale Data) ---
-    const cachedData = sessionStorage.getItem('bookshelfData');
-    if (cachedData) {
-        // Load immediately from the user's browser cache if available
-        loadDataIntoView(JSON.parse(cachedData));
+    const cachedDataString = sessionStorage.getItem('bookshelfData');
+    let hasLoadedLocal = false;
+
+    if (cachedDataString) {
+        // Load immediately from the browser cache if available
+        loadDataIntoView(JSON.parse(cachedDataString));
+        hasLoadedLocal = true;
     } else {
         try {
             // Fetch the lightning-fast local backup on first load
             const fallbackResponse = await fetch('/backup.json');
             if (fallbackResponse.ok) {
                 const fallbackData = await fallbackResponse.json();
+                sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));
                 loadDataIntoView(fallbackData);
+                hasLoadedLocal = true;
             }
         } catch (err) {
             console.warn("Could not load local backup.json:", err);
@@ -81,20 +85,47 @@ async function fetchBooks() {
         
         if (liveResponse.ok) {
             const liveData = await liveResponse.json();
+            
+            // FIX: Map optimized local cover paths onto the live data
+            // so it doesn't trigger a false "change" and reload the images.
+            const currentCacheString = sessionStorage.getItem('bookshelfData');
+            
+            if (currentCacheString) {
+                const currentCacheData = JSON.parse(currentCacheString);
+                
+                if (currentCacheData.books && liveData.books) {
+                    // 1. Create a lookup map of ID -> Local Cover Path
+                    const localCoversMap = {};
+                    currentCacheData.books.forEach(b => {
+                        // Check if the cover exists and is NOT a raw HTTP link
+                        if (b.id && b.cover && !b.cover.startsWith('http')) {
+                            localCoversMap[b.id] = b.cover;
+                        }
+                    });
+                    
+                    // 2. Inject local covers into the incoming live data
+                    liveData.books.forEach(b => {
+                        if (localCoversMap[b.id]) {
+                            b.cover = localCoversMap[b.id];
+                        }
+                    });
+                }
+            }
+            
             const newStringified = JSON.stringify(liveData);
             
-            // Only update the screen if the live database is DIFFERENT from our local/cached data
-            if (newStringified !== sessionStorage.getItem('bookshelfData')) {
+            // Only update the screen if the live database is TRULY different 
+            // (e.g., you added a new book or edited a summary in Google Sheets)
+            if (newStringified !== currentCacheString) {
                 sessionStorage.setItem('bookshelfData', newStringified);
                 loadDataIntoView(liveData);
-                console.log("Background sync complete: New books found and added to the shelf.");
+                console.log("Background sync complete: Changes found, updating shelf.");
             }
         }
     } catch (error) {
         console.warn("Live API background sync failed. Continuing to use local data.", error);
         
-        // Only show an error if absolutely no data loaded at all
-        if (allBooks.length === 0) {
+        if (!hasLoadedLocal) {
             container.innerHTML = `
                 <div class="error-container">
                     <h2 style="color: #1d1d1f; font-weight: 600; margin-bottom: 0.5rem;">Library Unavailable</h2>
@@ -127,14 +158,12 @@ function filterAndSortBooks() {
         filtered.sort((a, b) => (b.author || "").localeCompare(a.author || ""));
     }
 
-    // Reset for Chunked Rendering
     currentFilteredBooks = filtered;
     displayCount = 0;
     
     const container = document.getElementById('bookshelf');
-    container.innerHTML = ''; // Clear out the grid entirely
+    container.innerHTML = ''; 
 
-    // Setup the infinite scroll anchor if it doesn't exist
     let anchor = document.getElementById('scrollAnchor');
     if (!anchor) {
         anchor = document.createElement('div');
@@ -144,7 +173,7 @@ function filterAndSortBooks() {
     }
 
     setupIntersectionObserver(anchor);
-    loadMoreBooks(); // Load the first chunk
+    loadMoreBooks(); 
 }
 
 function setupIntersectionObserver(anchor) {
@@ -160,7 +189,7 @@ function setupIntersectionObserver(anchor) {
 }
 
 function loadMoreBooks() {
-    if (displayCount >= currentFilteredBooks.length) return; // All books rendered
+    if (displayCount >= currentFilteredBooks.length) return;
 
     const nextChunk = currentFilteredBooks.slice(displayCount, displayCount + CHUNK_SIZE);
     displayCount += CHUNK_SIZE;
@@ -179,7 +208,6 @@ function renderBooks(booksChunk) {
         const card = document.createElement('div');
         card.className = 'book-card';
         
-        // Click to flip card
         card.addEventListener('click', (e) => {
             if (e.target.tagName.toLowerCase() === 'a') return;
             document.querySelectorAll('.book-card.is-active').forEach(c => {
@@ -188,7 +216,6 @@ function renderBooks(booksChunk) {
             card.classList.toggle('is-active');
         });
 
-        // Image with Shimmer loading effect
         const imgContainer = document.createElement('div');
         imgContainer.className = 'img-container';
         
@@ -210,7 +237,6 @@ function renderBooks(booksChunk) {
         img.src = book.cover || 'https://placehold.co/250x375/e8e8ed/1d1d1f?text=No+Cover';
         imgContainer.appendChild(img);
 
-        // Summary Overlay
         if (book.summary) {
             const overlay = document.createElement('div');
             overlay.className = 'summary-overlay';
@@ -218,7 +244,6 @@ function renderBooks(booksChunk) {
             imgContainer.appendChild(overlay);
         }
 
-        // MINIMALIST AI SUMMARY LINK
         const aiPrompt = `Give me a 5 bullet point summary of the book ${book.title} by ${book.author}.`;
         const aiUrl = `https://chatgpt.com/?q=${encodeURIComponent(aiPrompt)}`;
         const aiLink = document.createElement('a');
@@ -233,7 +258,6 @@ function renderBooks(booksChunk) {
 
         card.appendChild(imgContainer);
 
-        // Text Body
         const body = document.createElement('div');
         body.className = 'card-body';
         
@@ -249,7 +273,6 @@ function renderBooks(booksChunk) {
         body.appendChild(title);
         body.appendChild(author);
 
-        // Amazon Button
         if (book.amazonLink) {
             const btn = document.createElement('a');
             btn.href = book.amazonLink;
