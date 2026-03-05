@@ -22,8 +22,8 @@ jobs:
 
       - name: Run Sync Script
         env:
-          # Use your Cloudflare domain so it fetches through your secure proxy
-          API_URL: 'https://www.charlesmhershey.com/api/books' 
+          # Replaced Cloudflare URL with the secure, raw Google Script URL to bypass bot protection
+          API_URL: ${{ secrets.GOOGLE_SCRIPT_URL }} 
         run: node scripts/sync-covers.js
 
       - name: Commit and Push Changes
