@@ -10,6 +10,15 @@
       "summary": "A classic guide for aspiring scientists, offering practical advice and philosophical reflections on scientific research."
     },
     {
+      "id": 1002,
+      "title": "Baruch: My Own Story",
+      "author": "Bernard Baruch",
+      "cover": "images/covers/1002.jpg",
+      "amazonLink": "https://www.amazon.com/dp/1607969130/?tag=internetarchi-20",
+      "isbn": "9781638232896",
+      "summary": "The autobiography of Bernard Baruch, a self-made Wall Street millionaire and trusted advisor to multiple US presidents."
+    },
+    {
       "id": 1003,
       "title": "The Burger King",
       "author": "Jim McLamore",
