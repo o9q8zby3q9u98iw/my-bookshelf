@@ -7,10 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailForm = document.getElementById('emailForm');
     const modalHeading = document.getElementById('modalHeading'); 
     
-    // 1. Modal Controls
     openBtn.addEventListener('click', () => {
         modal.classList.add('is-open');
-        // Reset the form view every time the modal is opened
         formFields.style.display = 'block';
         formStatus.style.display = 'none';
         modalHeading.style.display = 'block'; 
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === modal) modal.classList.remove('is-open');
     });
 
-    // 2. Fetch Dynamic Data (Local-First Stale-While-Revalidate)
     const loadDynamicData = async () => {
         const updateHomeUI = (homeData) => {
             if (homeData) {
@@ -32,15 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        // --- PHASE 1: Try cache or fast local backup first ---
-        const cachedData = sessionStorage.getItem('bookshelfData');
-        if (cachedData) {
-            updateHomeUI(JSON.parse(cachedData).home);
+        // --- PHASE 1: LOCAL-FIRST ---
+        const cachedDataString = sessionStorage.getItem('bookshelfData');
+        if (cachedDataString) {
+            updateHomeUI(JSON.parse(cachedDataString).home);
         } else {
             try {
                 const fallbackResponse = await fetch('/backup.json');
                 if (fallbackResponse.ok) {
                     const fallbackData = await fallbackResponse.json();
+                    sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));
                     updateHomeUI(fallbackData.home);
                 }
             } catch (err) {
@@ -48,15 +46,33 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // --- PHASE 2: Background sync with live API ---
+        // --- PHASE 2: BACKGROUND REVALIDATION ---
         try {
             const liveResponse = await fetch('/api/books');
             if (liveResponse.ok) {
                 const liveData = await liveResponse.json();
-                const newStringified = JSON.stringify(liveData);
                 
-                // Only update screen if live data differs from current state
-                if (newStringified !== sessionStorage.getItem('bookshelfData')) {
+                // Preserve local image paths so we don't corrupt the cache for the bookshelf page
+                const currentCacheStr = sessionStorage.getItem('bookshelfData');
+                if (currentCacheStr) {
+                    const currentCache = JSON.parse(currentCacheStr);
+                    if (currentCache.books && liveData.books) {
+                        const localCovers = {};
+                        currentCache.books.forEach(b => {
+                            if (b.id && b.cover && !b.cover.startsWith('http')) {
+                                localCovers[b.id] = b.cover;
+                            }
+                        });
+                        liveData.books.forEach(b => {
+                            if (localCovers[b.id]) {
+                                b.cover = localCovers[b.id];
+                            }
+                        });
+                    }
+                }
+                
+                const newStringified = JSON.stringify(liveData);
+                if (newStringified !== currentCacheStr) {
                     sessionStorage.setItem('bookshelfData', newStringified);
                     updateHomeUI(liveData.home);
                 }
@@ -68,16 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
     
     loadDynamicData();
 
-    // 3. Handle Email Form Submit
     emailForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const submitBtn = e.target.querySelector('button[type="submit"]');
-        
         submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
         
-        // Clear previous styling before new submission
         formStatus.className = "";
         formStatus.style.display = "none";
         
@@ -99,11 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (rawText.includes("success")) {
                 formStatus.textContent = "Message sent successfully!";
                 formStatus.className = "status-success";
-                
-                // Hide the inputs, button, AND the heading, showing ONLY the success banner
                 formFields.style.display = "none";
                 modalHeading.style.display = "none"; 
-                
                 emailForm.reset(); 
             } else {
                 throw new Error(rawText);
