@@ -67,7 +67,7 @@ async function fetchBooks() {
     } else {
         try {
             // Fetch the lightning-fast local backup on first load
-            const fallbackResponse = await fetch('/backup.json');
+            const fallbackResponse = await fetch('backup.json');
             if (fallbackResponse.ok) {
                 const fallbackData = await fallbackResponse.json();
                 sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));

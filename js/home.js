@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateHomeUI(JSON.parse(cachedDataString).home);
         } else {
             try {
-                const fallbackResponse = await fetch('/backup.json');
+                const fallbackResponse = await fetch('backup.json');
                 if (fallbackResponse.ok) {
                     const fallbackData = await fallbackResponse.json();
                     sessionStorage.setItem('bookshelfData', JSON.stringify(fallbackData));
