@@ -1169,6 +1169,51 @@
       "amazonLink": "https://www.amazon.com/dp/1847375448/?tag=internetarchi-20",
       "isbn": 1847375448,
       "summary": "Serena Williams’ journey from Compton to tennis icon: family, grit, setbacks, pressure, controversy, and mental toughness."
+    },
+    {
+      "id": 1132,
+      "title": "Setting the Table: The Transforming Power of Hospitality in Business",
+      "author": "Daniel Meyer",
+      "cover": "images/covers/1132.jpg",
+      "amazonLink": "https://www.amazon.com/Setting-Table-Transforming-Hospitality-Business/dp/0060742763",
+      "isbn": 60742763,
+      "summary": "How genuine hospitality builds stronger businesses, loyal customers, better teams, and lasting success beyond just good service."
+    },
+    {
+      "id": 1133,
+      "title": "Robinson Crusoe",
+      "author": "Daniel Defoe",
+      "cover": "images/covers/1133.jpg",
+      "amazonLink": "https://www.amazon.com/dp/B004UJ7VJU/?tag=internetarchi-20",
+      "isbn": 141439823,
+      "summary": "Published in 1719, Robinson Crusoe follows a shipwrecked man surviving alone through labor, faith, and persistence."
+    },
+    {
+      "id": 1134,
+      "title": "Limping on Water: My 40-year adventure with one of America's outstanding communications companies.",
+      "author": "Philip Beuth",
+      "cover": "images/covers/1134.jpg",
+      "amazonLink": "https://www.amazon.com/Limping-Water-outstanding-communications-companies-ebook/dp/B01993UGIY",
+      "isbn": 996408029,
+      "summary": "Philip Beuth’s autobiography about overcoming disability while building a career at Capital Cities/ABC through grit, loyalty, and persistence."
+    },
+    {
+      "id": 1135,
+      "title": "Benjamin Graham: The Memoirs of the Dean of Wall Street",
+      "author": "Benjamin Graham",
+      "cover": "images/covers/1135.jpg",
+      "amazonLink": "https://www.amazon.com/Benjamin-Graham-Memoirs-Dean-Street/dp/0070242690",
+      "isbn": 70242690,
+      "summary": "Benjamin Graham’s autobiography on his life, investing philosophy, career setbacks, and rise as the father of value investing."
+    },
+    {
+      "id": 1136,
+      "title": "Never Enough: From Barista to Billionaire",
+      "author": "Andrew Wilkinson",
+      "cover": "images/covers/1136.jpg",
+      "amazonLink": "https://www.amazon.com/Never-Enough-Billionaire-Andrew-Wilkinson/dp/1637744765",
+      "isbn": 1637744765,
+      "summary": "Andrew Wilkinson’s memoir about building vast wealth, then realizing money, status, and competition never fully satisfied him."
     }
   ],
   "home": {
