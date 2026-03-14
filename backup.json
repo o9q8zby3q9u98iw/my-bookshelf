@@ -1214,6 +1214,33 @@
       "amazonLink": "https://www.amazon.com/Never-Enough-Billionaire-Andrew-Wilkinson/dp/1637744765",
       "isbn": 1637744765,
       "summary": "Andrew Wilkinson’s memoir about building vast wealth, then realizing money, status, and competition never fully satisfied him."
+    },
+    {
+      "id": 1137,
+      "title": "UnStuck: Rebirth of an American Icon",
+      "author": "Stephanie Stuckey",
+      "cover": "images/covers/1137.jpg",
+      "amazonLink": "https://www.amazon.com/UnStuck-Rebirth-American-Stephanie-Stuckey/dp/1637744781",
+      "isbn": 1637744781,
+      "summary": "Stephanie Stuckey’s memoir about reviving her family’s pecan brand through grit, reinvention, resilience, and entrepreneurial turnaround."
+    },
+    {
+      "id": 1138,
+      "title": "Authentic: A Memoir by the Founder of Vans",
+      "author": "Paul Van Doren",
+      "cover": "images/covers/1138.jpg",
+      "amazonLink": "https://www.amazon.com/Authentic-Founder-Paul-Van-Doren/dp/164112024X",
+      "isbn": "164112024X",
+      "summary": "Paul Van Doren’s memoir about building Vans through hard work, manufacturing skill, risk-taking, persistence, and entrepreneurial grit."
+    },
+    {
+      "id": 1139,
+      "title": "Barefoot to Billionaire: Reflections on a Life's Work and a Promise to Cure Cancer",
+      "author": "Jon Huntsman Jr.",
+      "cover": "images/covers/1139.jpg",
+      "amazonLink": "https://www.amazon.com/Barefoot-Billionaire-Reflections-Promise-Cancer/dp/1468309323",
+      "isbn": 1468309323,
+      "summary": "Jon Huntsman Sr.’s memoir on building a business empire, honoring family values, philanthropy, and funding the fight against cancer."
     }
   ],
   "home": {
