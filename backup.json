@@ -1241,6 +1241,24 @@
       "amazonLink": "https://www.amazon.com/Barefoot-Billionaire-Reflections-Promise-Cancer/dp/1468309323",
       "isbn": 1468309323,
       "summary": "Jon Huntsman Sr.’s memoir on building a business empire, honoring family values, philanthropy, and funding the fight against cancer."
+    },
+    {
+      "id": 1158,
+      "title": "I Will Survive: Comeback Stories of a Corporate Warrior",
+      "author": "Sunil Robert",
+      "cover": "images/covers/1158.jpg",
+      "amazonLink": "https://www.amazon.com/Will-Survive-Comeback-Stories-Corporate/dp/8189975986?ref_=ast_author_dp&th=1&psc=1",
+      "isbn": 8189975986,
+      "summary": "Sunil Robert's memoir chronicles his journey from childhood poverty in India to becoming a global corporate communicator."
+    },
+    {
+      "id": 1159,
+      "title": "The Glass Castle",
+      "author": "Jeannette Walls",
+      "cover": "images/covers/1159.jpg",
+      "amazonLink": "https://www.amazon.com/Glass-Castle-Memoir-Jeannette-Walls/dp/074324754X",
+      "isbn": "074324754X",
+      "summary": "This memoir chronicles Jeannette Walls's nomadic, impoverished upbringing and her inspiring journey toward resilience, independence, and professional success."
     }
   ],
   "home": {
