@@ -1,2 +1,14 @@
 /*
   Link: </sitemap.xml>; rel="describedby"; type="application/xml"
+
+/
+  Vary: Accept
+
+/index.html
+  Vary: Accept
+
+/bookshelf
+  Vary: Accept
+
+/bookshelf.html
+  Vary: Accept
