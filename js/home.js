@@ -97,7 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const payload = {
             name: document.getElementById('senderName').value,
             email: document.getElementById('senderEmail').value,
-            message: document.getElementById('senderMessage').value
+            message: document.getElementById('senderMessage').value,
+            website: document.getElementById('website').value
         };
 
         try {
@@ -107,16 +108,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(payload)
             });
             
-            const rawText = await res.text();
+            const result = await res.json().catch(() => ({}));
             
-            if (rawText.includes("success")) {
+            if (res.ok && result.success === true) {
                 formStatus.textContent = "Message sent successfully!";
                 formStatus.className = "status-success";
                 formFields.style.display = "none";
                 modalHeading.style.display = "none"; 
                 emailForm.reset(); 
             } else {
-                throw new Error(rawText);
+                throw new Error("Contact request was rejected");
             }
         } catch (error) {
             console.error("Form Error:", error);
