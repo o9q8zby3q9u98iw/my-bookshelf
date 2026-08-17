@@ -7,7 +7,7 @@ class SiteNav extends HTMLElement {
                 <div class="nav-links">
                     <a href="index.html" class="${activePage === 'home' ? 'active' : ''}">Home</a>
                     <a href="bookshelf.html" class="${activePage === 'bookshelf' ? 'active' : ''}">Bookshelf</a>
-                    <a href="https://www.linkedin.com/in/cmhershey" target="_blank">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/cmhershey" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
             </nav>
         `;
