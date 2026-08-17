@@ -74,9 +74,10 @@
             <h2 id="modalHeading">Get in touch</h2>
             <form id="emailForm">
                 <div id="formFields">
-                    <input type="text" id="senderName" class="form-input" placeholder="Your Name" required>
-                    <input type="email" id="senderEmail" class="form-input" placeholder="Your Email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address (e.g., name@example.com)" required>
-                    <textarea id="senderMessage" class="form-input" placeholder="Your Message" rows="4" required></textarea>
+                    <input type="text" id="website" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" hidden>
+                    <input type="text" id="senderName" class="form-input" placeholder="Your Name" maxlength="100" autocomplete="name" required>
+                    <input type="email" id="senderEmail" class="form-input" placeholder="Your Email" maxlength="254" autocomplete="email" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address (e.g., name@example.com)" required>
+                    <textarea id="senderMessage" class="form-input" placeholder="Your Message" rows="4" maxlength="5000" required></textarea>
                     
                     <!-- Removed "solid" class -->
                     <button type="submit" class="btn-email">Send Message</button>
